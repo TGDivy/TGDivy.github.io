@@ -15,8 +15,9 @@ const { title, description, meta_title, image, what_i_do } = entry.data;
   description={description}
   image={image}
 >
-  <!-- <section class="section pt-0"> -->
-  <div class="mx-auto max-w-7xl lg:px-8 lg:bg-transparent bg-contentbackground">
+  <div
+    class="mx-auto max-w-7xl lg:px-8 lg:bg-transparent bg-contentbackground container"
+  >
     <div class="lg:grid lg:grid-cols-12">
       <div
         class="z-10 lg:col-span-4 lg:col-start-1 lg:row-start-1 lg:py-16 lg:bg-transparent"
@@ -128,7 +129,6 @@ const { title, description, meta_title, image, what_i_do } = entry.data;
       </div>
     </div>
   </div>
-  <!-- </section> -->
   <section class="section pt-0">
     <div class="container">
       <h3 class="page-heading mb-10">{what_i_do.title}</h3>

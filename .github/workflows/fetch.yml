@@ -1,0 +1,68 @@
+name: Fetch and update data
+
+# Controls when the workflow will run
+on:
+  # Triggers every 30 days
+  schedule:
+    - cron: "0 0 1 * *"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # Fetch all the github repos for the organization
+    # then download all the repo readme files
+    # then commit the changes to this repo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.repository }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: ./repo
+
+          # # GitHub CLI api
+      # https://cli.github.com/manual/gh_api
+      # gh api \
+      # -H "Accept: application/vnd.github+json" \
+      # -H "X-GitHub-Api-Version: 2022-11-28" \
+      # /orgs/ORG/repos
+      - name: Fetch repos
+        run: |
+          gh api \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          /orgs/ORG/repos \
+          | jq -r '.[] | .name' \
+          > ./repo-list.txt
+
+        # GitHub CLI api
+
+        # # https://cli.github.com/manual/gh_api
+
+        # gh api \
+        #   -H "Accept: application/vnd.github+json" \
+        #   -H "X-GitHub-Api-Version: 2022-11-28" \
+        #   /repos/OWNER/REPO/readme
+      - name: Fetch readme
+        run: |
+          while read repo; do
+              gh api \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              /repos/ORG/$repo/readme \
+              | jq -r '.content' \
+              | base64 -d \
+              > ./repo/$repo.md
+          done < ./repo-list.txt
+
+        # Commit the changes to this repo
+        #
+        # # https://cli.github.com/manual/gh_repo_create
+        # gh repo create \
+        #   --public \
+        #   --confirm \
