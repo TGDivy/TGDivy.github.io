@@ -16,6 +16,24 @@ const postsCollection = defineCollection({
   }),
 });
 
+const projectCollection = defineCollection({
+  schema: z.object({
+    id: z.string().optional(),
+    image: z.string().optional(),
+
+    name: z.string(),
+    description: z.string().optional(),
+    topics: z.array(z.string()).default(["others"]),
+    html_url: z.string().optional(),
+    forks_count: z.number().optional(),
+    stargazers_count: z.number().optional(),
+    size: z.number().optional(),
+    watchers_count: z.number().optional(),
+
+    draft: z.boolean().optional(),
+  }),
+});
+
 // Author collection schema
 const authorsCollection = defineCollection({
   schema: z.object({
@@ -53,4 +71,5 @@ export const collections = {
   posts: postsCollection,
   pages: pagesCollection,
   authors: authorsCollection,
+  projects: projectCollection,
 };
