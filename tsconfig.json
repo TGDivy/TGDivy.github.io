@@ -4,6 +4,8 @@
     "baseUrl": ".",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+    "types": ["astro/client"],
+    "strictNullChecks": true,
     "paths": {
       "@layouts/*": ["./src/layouts/*"],
       "@components/*": ["./src/layouts/components/*"],
