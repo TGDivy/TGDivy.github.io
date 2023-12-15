@@ -4,13 +4,15 @@
 username="TGDivy"
 
 # List all repositories of the user
-repos=$(gh repo list $username --json nameWithOwner -q '.[].nameWithOwner')
+repos=$(gh repo list $username --json nameWithOwner -q '.[].nameWithOwner' -L 1000)
 
 count=0
+skip_count=0
+readme_skip_count=0
+
 # Loop through each repository
 for repo in $repos
 do
-
   # everything before the slash is the username
   reponame=$(echo $repo | cut -d'/' -f2)
 
@@ -19,7 +21,6 @@ do
 
   # Extract the download URL from the response
   download_url=$(echo $response | jq -r '.download_url')
-  echo $download_url
 
   # Get the Repository Details
   repo_details=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" repos/$repo)
@@ -37,7 +38,8 @@ do
   if [ -z "$name" ] || [ -z "$description" ] || [ "$topics" = "[]" ] || [ "$name" = "null" ] || [ "$description" = "null" ] || [ "$topics" = "null" ]
   then
     # If any of them are, skip the current iteration of the loop
-    echo "Skipping $reponame as it does not have a name, description or topics"
+    echo -e "\033[0;31mSkipping $reponame as it does not have a name, description or topics\033[0m"
+    skip_count=$((skip_count+1))
     continue
   fi
 
@@ -47,14 +49,14 @@ do
   if [ -z "$content" ]
   then
     # If the content is empty, skip the current iteration of the loop
-    echo "Skipping $reponame as it does not have a README file"
+    echo -e "\033[0;31mSkipping $reponame as it does not have a README file\033[0m"
+    readme_skip_count=$((readme_skip_count+1))
     continue
   fi
 
-
   # Convert the topics array to a string with each topic separated by a newline and prefixed with a hyphen and tab from the start for each topic on each line
   topics_yaml=$(echo $topics | jq -r '.[]' | sed -e 's/^/- /')
-  
+
   # Create a YAML string with the extracted details
   yaml_string="---
 name: \"$name\"
@@ -69,13 +71,13 @@ watchers_count: $watchers_count
 ---\n"
 
   # Prepend the YAML string to the markdown file
-  echo -e "$yaml_string\n$content" > readme_files/$reponame.md
-  
-  # break the loop after 5 repositories
-  if [ $count -eq 2 ]
-  then
-    break
-  fi
-  # increment the count
+  echo -e "$yaml_string\n$content" > src/content/projects/$reponame.md
+
+  echo -e "\033[0;32mSuccessfully downloaded $reponame\033[0m"
   count=$((count+1))
 done
+
+echo -e "\033[0;34mTotal repositories processed: $((count+skip_count+readme_skip_count))\033[0m"
+echo -e "\033[0;32mTotal repositories successfully downloaded: $count\033[0m"
+echo -e "\033[0;31mTotal repositories skipped due to missing name, description, or topics: $skip_count\033[0m"
+echo -e "\033[0;31mTotal repositories skipped due to missing README: $readme_skip_count\033[0m"
