@@ -1,23 +1,21 @@
 ---
-title: "I’m John Doe, A content writer based in LDN, Currently at Bookworm"
-meta_title: "About"
+title: "Hiya 👋, I'm Divy B."
+meta_title: "Divy B"
 image: "/images/author.png"
 draft: false
 
 what_i_do:
   title: "What I Do"
   items:
-  - title: "Content Writing"
-    description: "Purus eget ipsum elementum venenatis, quis rutrum mi semper nonpurus eget ipsum elementum venenatis."
+  - title: "Software Engineering"
+    description: "I design, develop, and test software applications using various technologies and frameworks, such as Python, Django, React, and AWS."
   
-  - title: "Photography"
-    description: "Aenean maximus urna magna elementum, quis rutrum mi semper non purus eget ipsum venenatis."
+  - title: "Artificial Intelligence"
+    description: "I explore AI to understand human psychology and behavior, and to create intelligent systems that can help solve real-world problems."
   
-  - title: "Web Research"
-    description: "Aenean maximus urna magna elementum venenatis, quis semper non purus eget ipsum venenatis."
-
 ---
 
-A content writer with over 12 years experience working across brand identity, publishing and digital products. Maecenas sit amet purus eget ipsum elementum venenatis. Aenean maximus urna magna elementum venenatis quis non purus.
-
-Purus eget ipsum elementum venenatis. Aenean maximus urna magna elementum venenatis, quis rutrum mi semper non purus eget ipsum elementum venenatis, aenean maximus urna magna elementum.
+- I’m a software engineer with a passion for problem-solving and creating scalable solutions.
+- I’m fascinated by the potential of artificial intelligence to transform various domains and industries, such as healthcare, education, and entertainment.
+- I’m currently honing my software engineering skills with the goal of eventually transitioning back to AI engineering and research.
+- I’m also an avid learner who enjoys reading books, taking online courses, and attending workshops and events related to AI and software development.

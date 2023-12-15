@@ -1,22 +1,53 @@
 ---
-title: "How to make toys from old Olarpaper"
-description: "meta description"
-date: 2022-04-04T05:00:00Z
-image: "/images/posts/01.jpg"
-categories: ["art"]
-authors: ["Mark Dinn"]
-tags: ["diy", "toy"]
+title: "Towards Semi Supervised Named Entity Recognition"
+description: "Named Entity Recognition can be very useful to perform downstream tasks like classification, increase efficiancy for search algorithms, build powerful content recommendation systems or browse through information quickly!"
+date: 2021-08-25T05:00:00Z
+image: "https://github.com/TGDivy/OldPortfolio/blob/main/images/important_words/Overview.png"
+categories: ["machine learning"]
+authors: ["divy-b"]
+tags: ["machine learning", "python", "nlp"]
 draft: false
 ---
 
-Nemo vel ad consectetur namut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem. Ut bibendum lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis neque blandit euismod.
+## Overview
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
+Named Entity Recognition can be very useful to perform downstream tasks like classification, increase efficiancy for search algorithms, build powerful content recommendation systems or browse through information quickly!
 
-## Creative Design
+Despite so many use cases, most NER are very dependent on labelled data. This often restricts building these systems to domains of already existing datasets.
 
-Nam ut rutrum ex, venenatis sollicitudin urna. Aliquam erat volutpat. Integer eu ipsum sem. Ut bibendum lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis neque blandit euismod.
+This project aims to build a system capable generating labels based on confidence scores to identify potential entities, and more importantly named entities. 
 
-> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
+This flexibility, then allows us to further monitor, generate data and finetune to our domain specific use cases. 
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo vel ad consectetur ut aperiam. Itaque eligendi natus aperiam? Excepturi repellendus consequatur quibusdam optio expedita praesentium est adipisci dolorem ut eius!
+**Note:** because what is important in each domain, or to each indivisual is unique depending on the task they are trying to solve, it's not wise to remove the domain dependent nature of this task. Hence, this project aims to generate these labels instead.
+
+---
+
+### About the model
+
+It uses a pretrained Roberta, which is then finetuned on various NER datasets. Moreover, the finetuning is done in a way to capture the underlying distribution of the entities present and represent them on a scale between **0-300**.
+
+For more details about the implementation refer to: [Towards Semi Supervised Named Entity Recognition](https://github.com/TGDivy/Towards-unlabelled-Entity-Detection)
+
+#### Simple Flask app for visualization
+
+I built a simple Flask app for visualization of system, and illustate it better. To run the app, please install the dependencies, and run app.py file.
+
+```
+pip install -r requirements.txt 
+python app.py
+```
+
+Note: the **minimum score field** as the input, setting this field will help filter out entities with repsect their importance.
+
+The idea is to finetune this model based on user preference/ task to denote the importance in a particular context.
+
+![Overview](https://github.com/TGDivy/OldPortfolio/blob/main/images/important_words/Overview.png)
+
+## Minimum Score set to 10
+
+![Low Scores](https://github.com/TGDivy/OldPortfolio/blob/main/images/important_words/LowScore.png)
+
+## Minimum Score set to 220
+
+![High Score](https://github.com/TGDivy/OldPortfolio/blob/main/images/important_words/HighScore.png)

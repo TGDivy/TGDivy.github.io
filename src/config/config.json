@@ -4,9 +4,9 @@
     "base_url": "https://TGDivy.github.io",
     "base_path": "/",
     "trailing_slash": false,
-    "favicon": "/images/favicon.png",
-    "logo": "/images/logo.png",
-    "logo_width": "200",
+    "favicon": "/images/logo/Divy B-logos_transparent2.png",
+    "logo": "/images/logo/Divy B-logos_transparent2.png",
+    "logo_width": "150",
     "logo_height": "34",
     "logo_text": "Divy B"
   },
@@ -28,7 +28,7 @@
   },
 
   "contactinfo": {
-    "address": "355 S Grand Ave <br/> Los Angeles, CA 90071",
+    "address": "London, UK <br/> S126PQ",
     "email": "me [at] divyb [dot] xyz",
     "phone": "+44 7453 433712"
   }

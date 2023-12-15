@@ -1,0 +1,46 @@
+---
+import config from "@config/config.json";
+import Base from "@layouts/Base.astro";
+import Pagination from "@layouts/components/Pagination.astro";
+import Posts from "@layouts/Posts.astro";
+import { getSinglePage } from "@lib/contentParser.astro";
+import { sortByDate } from "@lib/utils/sortFunctions";
+import { getTaxonomy } from "@lib/taxonomyParser.astro";
+import { humanize } from "@lib/utils/textConverter";
+
+import { FaHashtag } from "react-icons/fa/index.js";
+
+const posts = await getSinglePage("posts");
+const sortedPosts = sortByDate(posts);
+const totalPages = Math.ceil(posts.length / config.settings.pagination);
+const currentPosts = sortedPosts.slice(0, config.settings.pagination);
+
+const categories = await getTaxonomy("posts", "categories");
+const tags = await getTaxonomy("posts", "tags");
+
+import { BiCategoryAlt } from "react-icons/bi/index.js";
+---
+
+<Base>
+  <section class="section pt-0">
+    <div class="container">
+      <ul class="space-x-4 mb-8">
+        {
+          categories.map((category) => (
+            <li class="inline-block">
+              <a
+                href={`/categories/${category}`}
+                class="rounded-lg bg-theme-light px-4 py-2 text-dark transition hover:bg-primary hover:text-white flex items-center group"
+              >
+                <BiCategoryAlt className="mr-1 text-primary group-hover:text-white transition h-6 w-6 scale-75" />
+                <>{humanize(category || "")} </>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <Posts posts={currentPosts} className="mb-16" />
+      <Pagination currentPage={1} totalPages={totalPages} />
+    </div>
+  </section>
+</Base>

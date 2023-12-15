@@ -2,7 +2,7 @@
   "colors": {
     "default": {
       "theme_color": {
-        "primary": "#01AD9F",
+        "primary": "#E86B35",
         "body": "#fff",
         "border": "#D5D5D5",
         "theme_light": "#FAFAFA",
@@ -18,7 +18,9 @@
   "fonts": {
     "font_family": {
       "primary": "Mulish:wght@400;600;700",
-      "primary_type": "sans-serif"
+      "primary_type": "sans-serif",
+      "secondary": "Mulish:wght@400;600;700",
+      "secondary_type": "sans-serif"
     },
     "font_size": {
       "base": "16",

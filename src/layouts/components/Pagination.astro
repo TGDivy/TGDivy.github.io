@@ -13,13 +13,16 @@ for (let i = 1; i <= totalPages; i++) {
 
 {
   totalPages > 1 && (
-    <nav class="mb-4 flex justify-center space-x-2 text-center" aria-label="Pagination">
+    <nav
+      class="mb-4 flex justify-center space-x-2 text-center"
+      aria-label="Pagination"
+    >
       {/* previous */}
       {hasPrevPage ? (
         <a
           href={
             indexPageLink
-              ? `${section ? "/" + section : "/"}`
+              ? `${section ? "/" + section : "/blog"}`
               : `${section ? "/" + section : ""}/page/${currentPage - 1}`
           }
           class="border border-primary hover:bg-primary hover:text-white rounded-md h-10 w-10 leading-[36px] font-semibold text-dark flex items-center justify-center transition duration-200"
@@ -71,7 +74,7 @@ for (let i = 1; i <= totalPages; i++) {
           <a
             href={
               i === 0
-                ? `${section ? "/" + section : "/"}`
+                ? `${section ? "/" + section : "/blog"}`
                 : `${section ? "/" + section : ""}/page/${pagination}`
             }
             aria-current="page"
@@ -79,7 +82,7 @@ for (let i = 1; i <= totalPages; i++) {
           >
             {pagination}
           </a>
-        )
+        ),
       )}
 
       {/* next page */}
