@@ -1,7 +1,7 @@
 ---
 title: "Hiya 👋, I'm Divy B."
 meta_title: "Divy B"
-image: "/images/author.png"
+image: "/images/authors/divy-b.jpg"
 draft: false
 
 what_i_do:
