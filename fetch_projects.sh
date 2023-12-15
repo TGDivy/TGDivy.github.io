@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# Replace 'username' with the GitHub username
 username="TGDivy"
+projects_dir="src/content/projects"
+projects_images_dir="public/images/projects"
+
+mkdir -p $projects_dir
+mkdir -p $projects_images_dir
 
 # List all repositories of the user
 repos=$(gh repo list $username --json nameWithOwner -q '.[].nameWithOwner' -L 1000)
@@ -13,14 +17,14 @@ readme_skip_count=0
 # Loop through each repository
 for repo in $repos
 do
+
+  # if reponame is not TGDivy/Language-Evolution
+  # if [[ $repo != TGDivy/Language-Evolution ]]; then
+  #   continue
+  # fi
+
   # everything before the slash is the username
   reponame=$(echo $repo | cut -d'/' -f2)
-
-  # Download the README file details
-  response=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" repos/$repo/readme)
-
-  # Extract the download URL from the response
-  download_url=$(echo $response | jq -r '.download_url')
 
   # Get the Repository Details
   repo_details=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" repos/$repo)
@@ -43,6 +47,12 @@ do
     continue
   fi
 
+  # Download the README file details
+  response=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" repos/$repo/readme)
+
+  # Extract the download URL from the response
+  download_url=$(echo $response | jq -r '.download_url')
+
   content=$(curl -s $download_url)
 
   # Check if the content is empty
@@ -53,6 +63,42 @@ do
     readme_skip_count=$((readme_skip_count+1))
     continue
   fi
+
+  # Create a directory to store images
+  mkdir -p $projects_images_dir/$reponame
+
+  # Extract all image URLs from the README content
+  image_urls=$(echo "$content" | grep -oP '!\[.*?\]\(\K[^)]*')
+  # Filter out duplicate URLs
+  image_urls=$(echo "$image_urls" | uniq)
+
+  echo -e "The image URLs are: $image_urls"
+
+  # Download each image
+  while read -r url; do
+    if [[ -z "$url" ]]; then
+      continue
+    fi
+    # Check if the URL is a relative path
+    if [[ $url != http* ]]; then
+      # If it is, download the file from the repository
+      temp=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" repos/$repo/contents/$url)
+      # delete content
+      temp=$(echo $temp | jq 'del(.content)')
+      download_url=$(echo $temp | jq -r '.download_url')
+      # if not url, then skip
+      if [[ $download_url == null ]]; then
+        continue
+      fi
+      filename=$(echo $temp | jq -r '.name')
+      echo -e "\033[0;32mDownloading $filename\033[0m"
+      echo $download_url
+
+      curl -s "$download_url" -o $projects_images_dir/$reponame/$filename
+      # Replace the relative path with the absolute path    
+      content=$(echo "$content" | sed "s|$url|/$projects_images_dir/$reponame/$filename|g")
+    fi
+  done <<< $image_urls
 
   # Convert the topics array to a string with each topic separated by a newline and prefixed with a hyphen and tab from the start for each topic on each line
   topics_yaml=$(echo $topics | jq -r '.[]' | sed -e 's/^/- /')
@@ -71,7 +117,7 @@ watchers_count: $watchers_count
 ---\n"
 
   # Prepend the YAML string to the markdown file
-  echo -e "$yaml_string\n$content" > src/content/projects/$reponame.md
+  echo -e "$yaml_string\n$content" > $projects_dir/$reponame.md
 
   echo -e "\033[0;32mSuccessfully downloaded $reponame\033[0m"
   count=$((count+1))
