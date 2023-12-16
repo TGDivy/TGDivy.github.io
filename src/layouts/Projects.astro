@@ -25,15 +25,7 @@ const { className, projects, fluid } = Astro.props;
 >
   {
     projects.map((project, i: number) => (
-      <div class={i === 0 && fluid != false ? "col-12" : "col-12 sm:col-6"}>
-        {
-          <a
-            href={`/${project.slug}`}
-            class="rounded-lg block hover:text-primary overflow-hidden group"
-          >
-            Link
-          </a>
-        }
+      <div class={"col-12 sm:col-6"}>
         <ul class="mt-6 mb-4 flex flex-wrap items-center text-text">
           <li class="mr-5">
             {authors
