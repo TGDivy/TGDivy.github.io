@@ -19,7 +19,7 @@ jobs:
           chmod +x ./fetch_projects.sh
           ./fetch_projects.sh
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Commit and push changes
         run: |
