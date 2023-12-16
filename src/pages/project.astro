@@ -16,7 +16,6 @@ const currentProjects = projects.slice(0, config.settings.pagination);
 
 const topics = await getTaxonomy("projects", "topics");
 
-import { BiCategoryAlt } from "react-icons/bi/index.js";
 import Projects from "@layouts/Projects.astro";
 import { getCollection } from "astro:content";
 ---

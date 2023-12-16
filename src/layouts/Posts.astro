@@ -27,6 +27,7 @@ const { className, posts, fluid } = Astro.props;
               class="group-hover:scale-[1.03] transition duration-300 w-full"
               src={post.data.image}
               alt={post.data.title}
+              transition:name={`record-${post.id}`}
               width={i === 0 ? 925 : 445}
               height={i === 0 ? 475 : 230}
             />

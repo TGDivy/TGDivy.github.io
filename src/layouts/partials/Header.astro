@@ -14,13 +14,16 @@ export interface NavigationLink {
   hasChildren?: boolean;
   children?: ChildNavigationLink[];
 }
-import { ViewTransitions } from "astro:transitions";
 
 const { main }: { main: NavigationLink[] } = menu;
 ---
 
-<ViewTransitions />
-<header class="header pt-6" transition:animate="initial">
+<header
+  class="header pt-6"
+  transition:animate="initial"
+  transition:persist
+  style="view-transition-name: header;"
+>
   <nav class="navbar container">
     <!-- logo -->
     <div class="order-0">
