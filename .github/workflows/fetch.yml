@@ -10,10 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - run: git config --global user.email "divy.work@outlook.com"
+      - run: git config --global user.name "tgdivy"
 
-      - name: Run script
+      - name: Fetch Projects Readme's and Media Files
         run: |
           chmod +x ./fetch_projects.sh
           ./fetch_projects.sh
@@ -22,8 +23,6 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --global user.email "me@divyb.xyz"
-          git config --global user.name "TGDivy"
-          git add -A
+          git add .
           git commit -m "Chore: Fetch and Update Projects Readme's"
           git push
