@@ -76,6 +76,45 @@ const pagesCollection = defineCollection({
   }),
 });
 
+const aboutCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    meta_title: z.string().optional(),
+    image: z.string().optional(),
+    description: z.string().optional(),
+    draft: z.boolean().optional(),
+
+    professional_title: z.string().optional(),
+
+    what_i_do: z
+      .object({
+        title: z.string().optional(),
+        items: z.array(
+          z.object({
+            title: z.string().optional(),
+            description: z.string().optional(),
+          }),
+        ),
+      })
+      .optional(),
+
+    timeline: z
+      .array(
+        z.object({
+          label: z.string().optional(),
+          content: z.array(
+            z.object({
+              date: z.string().optional(),
+              title: z.string().optional(),
+              description: z.string().optional(),
+            }),
+          ),
+        }),
+      )
+      .optional(),
+  }),
+});
+
 // Export collections
 export const collections = {
   posts: postsCollection,

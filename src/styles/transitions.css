@@ -1,4 +1,4 @@
-.vynil-animation-in {
+/* .vynil-animation-in {
     animation: appear 600ms ease-in-out 300ms forwards;
 }
 
@@ -40,7 +40,7 @@
         left: 0;
         opacity: 0;
     }
-}
+} */
 
 
 ::view-transition-group(header),
@@ -53,5 +53,5 @@
 ::view-transition-old(player),
 ::view-transition-new(player) {
     animation: fade 300ms ease-in-out forwards;
-    mix-blend-mode: normal;
+    /* mix-blend-mode: normal; */
 }
