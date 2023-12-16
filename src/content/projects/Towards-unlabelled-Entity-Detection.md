@@ -1,13 +1,16 @@
 ---
-name: "Towards-unlabelled-Entity-Detection"
+title: "Towards-unlabelled-Entity-Detection"
 description: "A named entity recognition system that is flexible and domain-independent by generating labels based on confidence scores. The model, a finetuned Roberta, can identify potential named entities and be customized to fit the needs of various tasks and applications through monitoring and fine-tuning. A Flask app is provided for visualisation."
-topics: 
+tags: 
 - domain-independent-design
 - large-language-models
 - named-entity-recognition
 - roberta
 - semi-supervised-learning
 - transformer
+created_at: 2021-10-05T16:41:23Z
+updated_at: 2023-01-07T17:05:15Z
+date: 2023-01-07T17:05:15Z
 html_url: "https://github.com/TGDivy/Towards-unlabelled-Entity-Detection"
 forks_count: 0
 stargazers_count: 1

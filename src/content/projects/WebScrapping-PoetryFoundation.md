@@ -1,11 +1,14 @@
 ---
-name: "WebScrapping-PoetryFoundation"
+title: "WebScrapping-PoetryFoundation"
 description: "Extracting all the poems from Poetry Foundation, using Selenium, ,Beautiful Soup and Multiprocessing"
-topics: 
+tags: 
 - beautifulsoup4
 - poetry
 - selenium
 - webscraping
+created_at: 2019-06-09T15:39:32Z
+updated_at: 2023-07-11T08:19:22Z
+date: 2023-07-11T08:19:22Z
 html_url: "https://github.com/TGDivy/WebScrapping-PoetryFoundation"
 forks_count: 3
 stargazers_count: 7

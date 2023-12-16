@@ -1,7 +1,7 @@
 ---
-name: "IMDB-Case-Study"
+title: "IMDB-Case-Study"
 description: "Exploring data analysis using Python with Jupyter notebooks, Matplotlib, Pandas and NumPy arrays."
-topics: 
+tags: 
 - data-analysis
 - imdb
 - imdb-dataset
@@ -12,6 +12,9 @@ topics:
 - numpy
 - pandas
 - python3
+created_at: 2018-10-19T14:15:16Z
+updated_at: 2019-06-11T20:28:15Z
+date: 2019-06-11T20:28:15Z
 html_url: "https://github.com/TGDivy/IMDB-Case-Study"
 forks_count: 3
 stargazers_count: 2

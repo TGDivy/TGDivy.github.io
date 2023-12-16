@@ -21,16 +21,26 @@ const projectCollection = defineCollection({
     id: z.string().optional(),
     image: z.string().optional(),
 
-    name: z.string(),
+    title: z.string(),
     description: z.string().optional(),
-    topics: z.array(z.string()).default(["others"]),
+    tags: z.array(z.string()).default([]),
+
+    created_at: z.date(),
+    updated_at: z.date(),
+    date: z.date(),
+
+    categories: z.array(z.string()).default(["Software Development"]),
+
     html_url: z.string().optional(),
+
     forks_count: z.number().optional(),
     stargazers_count: z.number().optional(),
     size: z.number().optional(),
     watchers_count: z.number().optional(),
 
     draft: z.boolean().optional(),
+
+    authors: z.array(z.string()).default(["divy-b"]),
   }),
 });
 

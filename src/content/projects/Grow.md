@@ -1,7 +1,7 @@
 ---
-name: "Grow"
+title: "Grow"
 description: "GROW is a web app that helps you track your progress in your personal growth journey. Its fundamental principle is to compete with yourself, not with others."
-topics: 
+tags: 
 - firebase
 - journal
 - motivational
@@ -13,6 +13,9 @@ topics:
 - timetracker
 - typescript
 - webapp
+created_at: 2022-09-12T20:12:41Z
+updated_at: 2023-08-11T17:45:00Z
+date: 2023-08-11T17:45:00Z
 html_url: "https://github.com/TGDivy/Grow"
 forks_count: 0
 stargazers_count: 4

@@ -1,7 +1,7 @@
 ---
-name: "MBTI-Personality-Classifier"
+title: "MBTI-Personality-Classifier"
 description: "A model which uses your social media posting predict your MBTI personality type."
-topics: 
+tags: 
 - bayesian-methods
 - kaggle
 - kaggle-dataset
@@ -20,6 +20,9 @@ topics:
 - socialmedia
 - tokenization
 - tweets
+created_at: 2018-10-19T14:37:44Z
+updated_at: 2023-12-02T11:22:42Z
+date: 2023-12-02T11:22:42Z
 html_url: "https://github.com/TGDivy/MBTI-Personality-Classifier"
 forks_count: 17
 stargazers_count: 51

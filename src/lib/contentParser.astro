@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import type { AnyEntryMap } from "astro:content";
+import type { CollectionKey } from "astro:content";
 
-export const getSinglePage = async (collection: keyof AnyEntryMap) => {
+export const getSinglePage = async (collection: CollectionKey) => {
   const allPage = await getCollection(collection);
   const removeIndex = allPage.filter((data) => data.id.match(/^(?!-)/));
   const removeDrafts = removeIndex.filter((data) => !data.data.draft);
-  return removeDrafts;
+  return allPage;
 };
 ---

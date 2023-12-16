@@ -32,6 +32,11 @@ do
   # Extract name, description, topics, html_url, forks_count, stargazers_count, size, watchers_count from the response
   name=$(echo $repo_details | jq -r '.name')
   description=$(echo $repo_details | jq -r '.description')
+  created_at=$(echo $repo_details | jq -r '.created_at')
+  updated_at=$(echo $repo_details | jq -r '.updated_at')
+  date=$(echo $repo_details | jq -r '.updated_at')
+
+  languages_url=$(echo $repo_details | jq -r '.languages_url')
   topics=$(echo $repo_details | jq -r '.topics')
   html_url=$(echo $repo_details | jq -r '.html_url')
   forks_count=$(echo $repo_details | jq -r '.forks_count')
@@ -105,10 +110,13 @@ do
 
   # Create a YAML string with the extracted details
   yaml_string="---
-name: \"$name\"
+title: \"$name\"
 description: \"$description\"
-topics: 
+tags: 
 $topics_yaml
+created_at: $created_at
+updated_at: $updated_at
+date: $date
 html_url: \"$html_url\"
 forks_count: $forks_count
 stargazers_count: $stargazers_count

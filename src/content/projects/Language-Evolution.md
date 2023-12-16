@@ -1,7 +1,7 @@
 ---
-name: "Language-Evolution"
+title: "Language-Evolution"
 description: "We use reinforcement learning to study how language can be used as a tool for agents to accomplish tasks in their environment, and show that structure in the evolved language emerges naturally through iterated learning, leading to the development of compositional language for describing and generalising about unseen objects."
-topics: 
+tags: 
 - iterated-learning
 - language-evolution
 - multiagent-reinforcement-learning
@@ -11,6 +11,9 @@ topics:
 - reinforcement-learning
 - student-teacher-learning
 - wordembeddings
+created_at: 2021-10-15T07:00:05Z
+updated_at: 2023-05-16T07:27:22Z
+date: 2023-05-16T07:27:22Z
 html_url: "https://github.com/TGDivy/Language-Evolution"
 forks_count: 0
 stargazers_count: 3
