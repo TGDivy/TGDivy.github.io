@@ -19,7 +19,7 @@
   "metadata": {
     "meta_author": "Divy B",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Divy B's personal website"
+    "meta_description": "Divy B's personal website and blog"
   },
 
   "params": {
@@ -29,7 +29,10 @@
 
   "contactinfo": {
     "address": "London, UK <br/> S126PQ",
+    "city": "London",
+    "country": "UK",
     "email": "me [at] divyb [dot] xyz",
-    "phone": "+44 7453 433712"
+    "phone": "+44 7453 433712",
+    "birthday": "7th July, 2000"
   }
 }

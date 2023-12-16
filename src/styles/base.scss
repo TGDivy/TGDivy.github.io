@@ -4,6 +4,25 @@ html {
 
 body {
   @apply bg-body font-primary font-normal leading-relaxed text-text;
+  // background-image: url("https://images.unsplash.com/photo-1519120944692-1a8d8cfc107f");
+  // background-size: cover;
+  // background-position: 0% 60%;
+  // background-attachment: fixed;
+
+  // background-image: url("https://images.unsplash.com/photo-1566041510639-8d95a2490bfb");
+  // background-size: cover;
+  // background-position: 0% 45%;
+  // background-attachment: fixed;
+
+  // background-image: url("https://images.unsplash.com/photo-1595113316349-9fa4eb24f884");
+  // background-size: cover;
+  // background-position: 0% 45%;
+  // background-attachment: fixed;
+
+  background-image: url("https://images.unsplash.com/photo-1482977036925-e8fcaa643657");
+  background-size: cover;
+  background-position: 0% 60%;
+  background-attachment: fixed;
 }
 
 h1,
@@ -12,7 +31,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-primary font-bold leading-tight text-dark;
+  @apply font-primary leading-tight text-dark;
 }
 
 h1,

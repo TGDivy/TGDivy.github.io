@@ -8,6 +8,10 @@
   @apply max-w-[1000px] px-4 md:px-8;
 }
 
+.large-container {
+  @apply max-w-[1300px] px-4 md:px-8;
+}
+
 // page heading
 .page-heading {
   @apply mb-20 text-center font-bold leading-10;
@@ -49,6 +53,20 @@
       @apply block h-11 w-11 rounded-lg border border-light bg-transparent text-center text-white transition hover:border-primary hover:bg-primary;
       svg {
         @apply m-auto h-11 text-base;
+      }
+    }
+  }
+}
+
+// a completely different social icon style
+.social-icons-on-dark {
+  @apply space-x-4;
+  li {
+    @apply inline-block;
+    a {
+      @apply block h-11 w-11 rounded-lg text-center transition hover:border-primary hover:bg-primary hover:text-white border-x-gray-500 bg-slate-200 text-slate-900;
+      svg {
+        @apply m-auto h-11 text-base w-5;
       }
     }
   }
