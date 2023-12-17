@@ -6,11 +6,11 @@
     },
     {
       "name": "Blog",
-      "url": "/blog"
+      "url": "/blog/1"
     },
     {
       "name": "Projects",
-      "url": "/project"
+      "url": "/project/1"
     }
   ],
   "footer": [
@@ -20,7 +20,7 @@
     },
     {
       "name": "Blog",
-      "url": "/blog"
+      "url": "/blog/1"
     },
     {
       "name": "Contact",

@@ -7,7 +7,6 @@ interface Props {
 }
 const { section, currentPage, totalPages, base } = Astro.props;
 
-const indexPageLink = currentPage === 2;
 const hasPrevPage = currentPage > 1;
 const hasNextPage = totalPages > currentPage;
 
@@ -26,11 +25,7 @@ for (let i = 1; i <= totalPages; i++) {
       {/* previous */}
       {hasPrevPage ? (
         <a
-          href={
-            indexPageLink
-              ? `${section ? "/" + section : `/${base}`}`
-              : `${section ? "/" + section : ""}${base}/${currentPage - 1}`
-          }
+          href={`${section ? "/" + section : ""}/${base}/${currentPage - 1}`}
           class="border border-primary hover:bg-primary hover:text-white rounded-md h-10 w-10 leading-[36px] font-semibold text-dark flex items-center justify-center transition duration-200"
         >
           <span class="sr-only">Previous</span>
@@ -78,11 +73,7 @@ for (let i = 1; i <= totalPages; i++) {
           </span>
         ) : (
           <a
-            href={
-              i === 0
-                ? `${section ? "/" + section : "/" + base}`
-                : `${section ? "/" + section : ""}/${base}/${pagination}`
-            }
+            href={`${section ? "/" + section : ""}/${base}/${pagination}`}
             aria-current="page"
             class={`border border-primary hover:bg-primary hover:text-white rounded-md h-10 w-10 leading-[36px] font-semibold text-dark flex items-center justify-center transition duration-200`}
           >

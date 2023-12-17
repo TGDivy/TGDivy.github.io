@@ -28,8 +28,5 @@ export default defineConfig({
     },
     extendDefaultPlugins: true,
   },
-  redirects: {
-    "/blog": "/blog/1",
-    "/project": "/project/1",
-  },
+  redirects: {},
 });

@@ -1,0 +1,46 @@
+---
+import config from "@config/config.json";
+import Base from "@layouts/Base.astro";
+import Projects from "@layouts/Projects.astro";
+import Pagination from "@layouts/components/Pagination.astro";
+import { getTaxonomy } from "@lib/taxonomyParser.astro";
+import { sortProjectByAttribute } from "@lib/utils/sortFunctions";
+import type { GetStaticPaths, Page } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+// export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+//   const projects = await getCollection("projects");
+//   const sortedProjects = sortProjectByAttribute(projects, "stargazers_count");
+//   return paginate(sortedProjects, { pageSize: config.settings.pagination * 2 });
+// };
+
+// type Props = {
+//   page: Page<CollectionEntry<"projects">>;
+// };
+
+// const { page } = Astro.props;
+
+// const projects = page.data;
+
+const projects = await getCollection("projects");
+const sortedProjects = sortProjectByAttribute(projects, "stargazers_count");
+const page = sortedProjects.slice(0, config.settings.pagination * 2);
+
+const categories = await getTaxonomy("posts", "categories");
+const tags = await getTaxonomy("posts", "tags");
+---
+
+<Base>
+  <section class="section pt-0">
+    <div class="large-container">
+      <div class="mb-12">
+        <Projects projects={projects} />
+      </div>
+      <Pagination
+        currentPage={0}
+        totalPages={Math.ceil(projects.length / config.settings.pagination)}
+        base="project"
+      />
+    </div>
+  </section>
+</Base>
