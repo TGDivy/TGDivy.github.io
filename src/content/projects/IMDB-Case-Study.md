@@ -1,6 +1,7 @@
 ---
 title: "IMDB-Case-Study"
 description: "Exploring data analysis using Python with Jupyter notebooks, Matplotlib, Pandas and NumPy arrays."
+image: ""
 tags: 
 - data-analysis
 - imdb

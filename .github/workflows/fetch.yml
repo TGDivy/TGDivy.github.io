@@ -1,6 +1,9 @@
 name: Update Projects Readme's
 
 on:
+  push:
+    paths:
+      - "fetch_projects.sh"
   schedule:
     - cron: "0 0 1 * *" # This will run the action at 00:00 on the first day of every month
   workflow_dispatch: # This allows you to manually trigger the action

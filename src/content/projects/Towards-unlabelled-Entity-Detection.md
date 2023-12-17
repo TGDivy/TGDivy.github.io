@@ -1,6 +1,7 @@
 ---
 title: "Towards-unlabelled-Entity-Detection"
 description: "A named entity recognition system that is flexible and domain-independent by generating labels based on confidence scores. The model, a finetuned Roberta, can identify potential named entities and be customized to fit the needs of various tasks and applications through monitoring and fine-tuning. A Flask app is provided for visualisation."
+image: "/public/images/projects/Towards-unlabelled-Entity-Detection/Overview.png"
 tags: 
 - domain-independent-design
 - large-language-models

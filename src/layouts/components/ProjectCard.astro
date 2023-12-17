@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { IoEye, IoGitNetwork, IoLogoGithub, IoStar } from "react-icons/io5";
 import { Image } from "astro:assets";
+import { humanize } from "@lib/utils/textConverter";
 interface Props {
   project: CollectionEntry<"projects">;
 }
@@ -21,7 +22,7 @@ const {
   watchers_count,
   html_url,
 } = data;
-
+// const image = "";
 // const image = `https://picsum.photos/seed/${slug}/400/300`;
 ---
 
@@ -60,7 +61,7 @@ const {
           href={`/${project.slug}`}
           class="block hover:text-primary transition duration-300"
         >
-          {title}
+          {humanize(title)}
         </a>
       </h5>
       <p

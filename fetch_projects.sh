@@ -78,7 +78,8 @@ do
   image_urls=$(echo "$image_urls" | uniq)
 
   echo -e "The image URLs are: $image_urls"
-
+  
+  project_image_url=""
   # Download each image
   while read -r url; do
     if [[ -z "$url" ]]; then
@@ -87,7 +88,7 @@ do
     # Check if the URL is a relative path
     if [[ $url != http* ]]; then
       # If it is, download the file from the repository
-      temp=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" repos/$repo/contents/$url)
+      temp=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "repos/$repo/contents/$url")
       # delete content
       temp=$(echo $temp | jq 'del(.content)')
       download_url=$(echo $temp | jq -r '.download_url')
@@ -99,9 +100,14 @@ do
       echo -e "\033[0;32mDownloading $filename\033[0m"
       echo $download_url
 
-      curl -s "$download_url" -o $projects_images_dir/$reponame/$filename
+      curl -s "$download_url" -o "$projects_images_dir/$reponame/$filename"
       # Replace the relative path with the absolute path    
       content=$(echo "$content" | sed "s|$url|/$projects_images_dir/$reponame/$filename|g")
+
+      # if project_image_url is empty, then set it to the first image url
+      if [[ -z "$project_image_url" ]]; then
+        project_image_url="/$projects_images_dir/$reponame/$filename"
+      fi
     fi
   done <<< $image_urls
 
@@ -112,6 +118,7 @@ do
   yaml_string="---
 title: \"$name\"
 description: \"$description\"
+image: \"$project_image_url\"
 tags: 
 $topics_yaml
 created_at: $created_at

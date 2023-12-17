@@ -1,6 +1,7 @@
 ---
 title: "Language-Evolution"
 description: "We use reinforcement learning to study how language can be used as a tool for agents to accomplish tasks in their environment, and show that structure in the evolved language emerges naturally through iterated learning, leading to the development of compositional language for describing and generalising about unseen objects."
+image: "/public/images/projects/Language-Evolution/Environment.drawio.png"
 tags: 
 - iterated-learning
 - language-evolution
