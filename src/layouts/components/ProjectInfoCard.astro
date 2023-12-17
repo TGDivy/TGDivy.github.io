@@ -1,0 +1,98 @@
+---
+import { Image } from "astro:assets";
+import Social from "./Social.astro";
+import type { IconType } from "react-icons";
+import type { CollectionEntry } from "astro:content";
+import { humanize, slugify } from "@lib/utils/textConverter";
+import dateFormat from "@lib/utils/dateFormat";
+import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi/index.js";
+import { getSinglePage } from "@lib/contentParser.astro";
+import Tags from "./Tags.astro";
+import { slug } from "github-slugger";
+import Share from "./Share.astro";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const props: Props = Astro.props;
+const { project } = props;
+const { id, data } = project;
+const { title, description, image, date, tags, categories, authors } = data;
+const allAuthor = await getSinglePage("authors");
+const author = allAuthor.find((author) => author.slug === authors[0]);
+
+const topTags = tags.splice(0, 3);
+---
+
+<div
+  class="w-full mb-6 lg:mb-0 mx-auto relative bg-white text-center dark:bg-dark-primary px-6 rounded-[20px] mt-[160px] lg:mt-0"
+>
+  {
+    image && (
+      <Image
+        src={image}
+        width={295}
+        height={395}
+        alt={title}
+        transition:name={`project-image-${id}`}
+        class="w-[240px] h-[200px] absolute left-[50%] transform -translate-x-[50%] drop-shadow-xl mx-auto rounded-[20px] -mt-[140px] object-cover"
+        alt="about"
+      />
+    )
+  }
+  <div class="pt-[70px] hidden"></div>
+  <div class="pt-[40px] hidden"></div>
+
+  <div class={`pt-${image ? "[70px]" : "[40px]"} pb-8`}>
+    <h3
+      class="mt-6 mb-1 font-semibold dark:text-white`}"
+      transition:name={`project-title-${id}`}
+    >
+      {humanize(title)}
+    </h3>
+    <p class="text-gray-500 dark:text-gray-400 mt-1 mb-1">
+      {description}
+    </p>
+
+    <Tags tags={topTags} />
+
+    <div class="text-center mt-6 mb-1">
+      <ul class="mt-4 flex flex-wrap items-center justify-center text-text">
+        <li class="mx-3">
+          {
+            author && (
+              <a
+                href={`/authors/${slugify(author.slug)}`}
+                class="flex items-center hover:text-primary font-medium"
+              >
+                {author.data.image && (
+                  <Image
+                    src={author.data.image}
+                    alt={author.data.title}
+                    height={50}
+                    width={50}
+                    class="mr-2 h-6 w-6 rounded-full"
+                  />
+                )}
+                <span>{author.data.title}</span>
+              </a>
+            )
+          }
+        </li>
+        <li class="mx-3 flex items-center flex-wrap font-medium mb-1">
+          <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
+          <>{dateFormat(date || new Date())}</>
+        </li>
+        <div class="flex items-center justify-between mt-6 mb">
+          <Share
+            className="social-icons-on-dark after:content-['Share'] after:block after:text-xs after:text-gray-500 after:font-medium after:uppercase after:leading-none after:font-sans after:mt-2"
+            title={title}
+            description={description}
+            slug={slug}
+          />
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

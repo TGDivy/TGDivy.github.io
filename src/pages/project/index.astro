@@ -24,7 +24,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 
 const projects = await getCollection("projects");
 const sortedProjects = sortProjectByAttribute(projects, "stargazers_count");
-const page = sortedProjects.slice(0, config.settings.pagination * 2);
+const page = sortedProjects.slice(0, config.settings.pagination);
 
 const categories = await getTaxonomy("posts", "categories");
 const tags = await getTaxonomy("posts", "tags");

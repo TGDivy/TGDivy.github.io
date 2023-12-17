@@ -5,12 +5,12 @@
       "url": "/"
     },
     {
-      "name": "Blog",
-      "url": "/blog/1"
-    },
-    {
       "name": "Projects",
       "url": "/project/1"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog/1"
     }
   ],
   "footer": [

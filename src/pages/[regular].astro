@@ -2,6 +2,7 @@
 import Base from "@layouts/Base.astro";
 import Default from "@layouts/Default.astro";
 import PostSingle from "@layouts/PostSingle.astro";
+import ProjectSingle from "@layouts/ProjectSingle.astro";
 import { getSinglePage } from "@lib/contentParser.astro";
 
 const getPosts = await getSinglePage("posts");
@@ -24,6 +25,7 @@ export async function getStaticPaths() {
 }
 
 const { page } = Astro.props;
+const { data, collection } = page;
 const { title, meta_title, description, image } = page.data;
 ---
 
@@ -34,8 +36,10 @@ const { title, meta_title, description, image } = page.data;
   image={image}
 >
   {
-    postsSlug.includes(page.slug) ? (
+    collection === "posts" ? (
       <PostSingle post={page} />
+    ) : collection === "projects" ? (
+      <ProjectSingle project={page} />
     ) : (
       <Default data={page} />
     )

@@ -1,0 +1,25 @@
+---
+import { humanize } from "@lib/utils/textConverter";
+import { FaHashtag } from "react-icons/fa/index.js";
+interface Props {
+  tags: (string | null)[];
+}
+
+const { tags } = Astro.props;
+---
+
+<ul class="space-x-4">
+  {
+    tags.map((tag) => (
+      <li class="inline-block">
+        <a
+          href={`/tags/${tag} m-1`}
+          class="rounded-lg bg-theme-light px-3 py-1 text-dark transition hover:bg-primary hover:text-white flex items-center group"
+        >
+          <FaHashtag className="mr-1 text-primary group-hover:text-white transition" />
+          <>{humanize(tag || "")}</>
+        </a>
+      </li>
+    ))
+  }
+</ul>
