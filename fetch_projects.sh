@@ -3,6 +3,7 @@
 username="TGDivy"
 projects_dir="src/content/projects"
 projects_images_dir="public/images/projects"
+projects_images_save_path="images/projects"
 
 mkdir -p $projects_dir
 mkdir -p $projects_images_dir
@@ -102,11 +103,11 @@ do
 
       curl -s "$download_url" -o "$projects_images_dir/$reponame/$filename"
       # Replace the relative path with the absolute path    
-      content=$(echo "$content" | sed "s|$url|/$projects_images_dir/$reponame/$filename|g")
+      content=$(echo "$content" | sed "s|$url|/$projects_images_save_path/$reponame/$filename|g")
 
       # if project_image_url is empty, then set it to the first image url
       if [[ -z "$project_image_url" ]]; then
-        project_image_url="/$projects_images_dir/$reponame/$filename"
+        project_image_url="/$projects_images_save_path/$reponame/$filename"
       fi
     fi
   done <<< $image_urls
