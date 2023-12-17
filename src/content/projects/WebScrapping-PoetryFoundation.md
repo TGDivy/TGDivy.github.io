@@ -1,7 +1,7 @@
 ---
 title: "WebScrapping-PoetryFoundation"
 description: "Extracting all the poems from Poetry Foundation, using Selenium, ,Beautiful Soup and Multiprocessing"
-image: "/public/images/projects/WebScrapping-PoetryFoundation/wordCloud.png"
+image: "/images/projects/WebScrapping-PoetryFoundation/wordCloud.png"
 tags: 
 - beautifulsoup4
 - poetry
@@ -13,7 +13,7 @@ date: 2023-12-17T05:43:07Z
 html_url: "https://github.com/TGDivy/WebScrapping-PoetryFoundation"
 forks_count: 3
 stargazers_count: 7
-size: 10120
+size: 10118
 watchers_count: 7
 ---
 
@@ -31,4 +31,4 @@ The dataset was created with intention for Artificial Poem Generation. It could 
 
 The prominent tags featured in this dataset are highlighted by this word cloud:<br>
 <br><br>
-![WordCloud Tags](/public/images/projects/WebScrapping-PoetryFoundation/wordCloud.png)
+![WordCloud Tags](/images/projects/WebScrapping-PoetryFoundation/wordCloud.png)

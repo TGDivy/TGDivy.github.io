@@ -1,7 +1,7 @@
 ---
 title: "Grow"
 description: "GROW is a web app that helps you track your progress in your personal growth journey. Its fundamental principle is to compete with yourself, not with others."
-image: "/public/images/projects/Grow/Statistic.png"
+image: "/images/projects/Grow/Statistic.png"
 tags: 
 - firebase
 - journal
@@ -20,7 +20,7 @@ date: 2023-08-11T17:45:00Z
 html_url: "https://github.com/TGDivy/Grow"
 forks_count: 0
 stargazers_count: 4
-size: 2065
+size: 2276
 watchers_count: 4
 ---
 
@@ -44,7 +44,7 @@ At the end of the day, the journal feature helps me reflect on my habits (like e
 
 Grow is still a work in progress, but I'm really enjoying it so far and thought you might too. Check it out at <https://grow.divyb.xyz> and let me know what you think!
 
-![Final Image](/public/images/projects/Grow/Statistic.png)
+![Final Image](/images/projects/Grow/Statistic.png)
 
 
 ## Issues

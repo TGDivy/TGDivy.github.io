@@ -1,7 +1,7 @@
 ---
 title: "Language-Evolution"
 description: "We use reinforcement learning to study how language can be used as a tool for agents to accomplish tasks in their environment, and show that structure in the evolved language emerges naturally through iterated learning, leading to the development of compositional language for describing and generalising about unseen objects."
-image: "/public/images/projects/Language-Evolution/Environment.drawio.png"
+image: "/images/projects/Language-Evolution/Environment.drawio.png"
 tags: 
 - iterated-learning
 - language-evolution
@@ -59,7 +59,7 @@ In this environment, agents are interacting with landmarks and obstacles in a si
 
 Environment Details             |
 :-----------------------------:|
-![Environment](/public/images/projects/Language-Evolution/Environment.drawio.png) |
+![Environment](/images/projects/Language-Evolution/Environment.drawio.png) |
 
 ## Results
 
@@ -72,7 +72,7 @@ We used weights and biases to track our experiments. Here are some of the result
 
 Mid Training             |  After Training
 :-------------------------:|:-------------------------:
-![3 Agent Success](/public/images/projects/Language-Evolution/3agent-mid.gif)  |  ![3 Agent Success](/public/images/projects/Language-Evolution/3agent.gif)
+![3 Agent Success](/images/projects/Language-Evolution/3agent-mid.gif)  |  ![3 Agent Success](/images/projects/Language-Evolution/3agent.gif)
 
 For more details on the experiments, please refer to my thesis. [Link to thesis](Thesis.pdf) It also includes the model architecture and hyperparameters used for each experiment, as well as multiple agent scenarios and the results of the experiments.
 
@@ -90,7 +90,7 @@ We set out with the goal to understand **language and its evolution**. We believ
 
 ### Vocab and symbol emission through time
 
-![3 Agent Success](/public/images/projects/Language-Evolution/Agent-2-converge.drawio.png)
+![3 Agent Success](/images/projects/Language-Evolution/Agent-2-converge.drawio.png)
 
 In this experiment, we observe the relationship between the number of unique tokens (vocab size) and training progress for a pair of agents in an environment with 3 landmarks of 3 different colors. As training progresses, the vocab size gradually decreases from 10 to 4, despite there being no explicit objective to reduce it. Upon investigating the agents' communication, it is discovered that they have developed a holistic language where each symbol has a specific meaning, and some symbols are used as synonyms. In the converged plot of randomly sampled episodes, the agents are observed to only utter one or two symbols to indicate the color of the landmark.
 
@@ -101,7 +101,7 @@ Here we can see that initially the communication between the agents is extremely
 Symbol Emission through time of 3 agents learning              |
 :-----------------------------:|
 Here we see that as the agents learn to communicate, they also become more efficient and precise!                         |
-![3 Agent learning](/public/images/projects/Language-Evolution/Learning-of-3-agents.gif)  |
+![3 Agent learning](/images/projects/Language-Evolution/Learning-of-3-agents.gif)  |
 
 ### Contextual Embeddings
 
@@ -110,12 +110,12 @@ To better understand the language developed by the agents, we used a technique c
 Word Vector t-SNE              |
 :-----------------------------:|
 Here we can see through t-SNE how different symbols cluster together to mean different things. Note the labels are based on our observations of the video.                          |
-![3 Agent Success](/public/images/projects/Language-Evolution/Word_vector.drawio.png)  |
+![3 Agent Success](/images/projects/Language-Evolution/Word_vector.drawio.png)  |
 
 Zoom In Go Yellow Section      |
 :-----------------------------:|
 When we zoom in we uncover more details hidden in a symbols. Therefore it manages to convey multiple information in single symbol emission. I.e. the goal and the agent referred to!                          |
-![3 Agent Success](/public/images/projects/Language-Evolution/context_vector.drawio.png)  |
+![3 Agent Success](/images/projects/Language-Evolution/context_vector.drawio.png)  |
 
 ### Agents invent morse code! - Restraining Vocab Size
 
@@ -128,8 +128,8 @@ Overall, it seems that the formation of compositional language requires an artif
 3 Agent - 2 symbols             |
 :-----------------------------:|
 Here the agents were only allowed to emit 2 symbols, and we see them still being succesful!                  |
-![3 Agent Morse Code](/public/images/projects/Language-Evolution/Morecode3.drawio.png) |
+![3 Agent Morse Code](/images/projects/Language-Evolution/Morecode3.drawio.png) |
 
 Morse Code example 1             |  Morse Code example 2
 :-------------------------:|:-------------------------:
-![3 Agent Success](/public/images/projects/Language-Evolution/Morsecode1.gif)  |  ![3 Agent Success](/public/images/projects/Language-Evolution/Morsecode1.gif)
+![3 Agent Success](/images/projects/Language-Evolution/Morsecode1.gif)  |  ![3 Agent Success](/images/projects/Language-Evolution/Morsecode1.gif)

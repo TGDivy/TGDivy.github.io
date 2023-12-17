@@ -1,7 +1,7 @@
 ---
 title: "fractal-landscapes"
 description: "Fractal logic used to develop and design beautiful scenery, special applications for background design in for 2-d side scroller games."
-image: "/public/images/projects/fractal-landscapes/Final.png"
+image: "/images/projects/fractal-landscapes/Final.png"
 tags: 
 - computer-g
 - fractals
@@ -11,7 +11,7 @@ date: 2023-12-17T05:23:36Z
 html_url: "https://github.com/TGDivy/fractal-landscapes"
 forks_count: 2
 stargazers_count: 2
-size: 19211
+size: 15084
 watchers_count: 2
 ---
 
@@ -28,7 +28,7 @@ Please take look a deeper look at all the project details in the [presentation f
 ## Guidlines on Using the repository.
 
 Note, each of the files act as a class aiming to develop one of the fractal patterns. Finally, all the fractals.hs file combines all them to generate some beautiful images like the one below.
-![Final Image](/public/images/projects/fractal-landscapes/Final.png)
+![Final Image](/images/projects/fractal-landscapes/Final.png)
 
 ### An Intersting Observation.
 

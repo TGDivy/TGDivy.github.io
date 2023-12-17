@@ -1,7 +1,7 @@
 ---
 title: "Towards-unlabelled-Entity-Detection"
 description: "A named entity recognition system that is flexible and domain-independent by generating labels based on confidence scores. The model, a finetuned Roberta, can identify potential named entities and be customized to fit the needs of various tasks and applications through monitoring and fine-tuning. A Flask app is provided for visualisation."
-image: "/public/images/projects/Towards-unlabelled-Entity-Detection/Overview.png"
+image: "/images/projects/Towards-unlabelled-Entity-Detection/Overview.png"
 tags: 
 - domain-independent-design
 - large-language-models
@@ -54,12 +54,12 @@ Note: the **minimum score field** as the input, setting this field will help fil
 
 The idea is to finetune this model based on user preference/ task to denote the importance in a particular context.
 
-![Overview](/public/images/projects/Towards-unlabelled-Entity-Detection/Overview.png)
+![Overview](/images/projects/Towards-unlabelled-Entity-Detection/Overview.png)
 
 ## Minimum Score set to 10
 
-![Low Score](/public/images/projects/Towards-unlabelled-Entity-Detection/LowScore.png)
+![Low Score](/images/projects/Towards-unlabelled-Entity-Detection/LowScore.png)
 
 ## Minimum Score set to 220
 
-![High Score](/public/images/projects/Towards-unlabelled-Entity-Detection/HighScore.png)
+![High Score](/images/projects/Towards-unlabelled-Entity-Detection/HighScore.png)

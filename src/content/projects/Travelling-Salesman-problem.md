@@ -1,7 +1,7 @@
 ---
 title: "Travelling-Salesman-problem"
 description: "Basic to elegant solutions for the travelling salesman problem. Includes Christofides 1.5 approximation algorithm. Also creates graphs and displays graphically for testing the algorithm."
-image: "/public/images/projects/Travelling-Salesman-problem/Swap Heuristic.png"
+image: "/images/projects/Travelling-Salesman-problem/Swap Heuristic.png"
 tags: 
 - pathfinding-algorithm
 - traveling-salesman-problem
@@ -44,14 +44,14 @@ However, there are many versions of the problem, on which specifically we can de
 #### Swap Heuristic
 
 Here, I explore the effect of repeatedly swapping the order in which a pair of adjacent cities are visited, as long as this swap improves (reduces) the cost of the overall tour.
-![image-20200426192631311](/public/images/projects/Travelling-Salesman-problem/Swap Heuristic.png)
+![image-20200426192631311](/images/projects/Travelling-Salesman-problem/Swap Heuristic.png)
 
 #### 2-Opt Heuristic
 
 The 2-Opt Heuristic is another heuristic that repeatedly makes *local adjustments* until there is no improvement from doing these. In this case, the alterations are more significant than the swaps. 
 
 This method repeatedly nominates a contiguous sequence of cities on the current tour and proposes that these be visited in the reverse order if that would reduce the overall cost of the tour.
-![image-20200426192631311](/public/images/projects/Travelling-Salesman-problem/TwoOptHueristic.png)
+![image-20200426192631311](/images/projects/Travelling-Salesman-problem/TwoOptHueristic.png)
 
 #### Greedy
 
@@ -59,7 +59,7 @@ A commonly used approach to optimization problems is the greedy approach, where 
 
 For the TSP problem, this approach involves taking some initial city/node (for us, we will take the one indexed 0) and building a tour out from that starting point. At the i-th step (for i= 0,...), we consider the recently-assigned endpoint in the path against all previously unused nodes, and then we take our next node to be the one closest in distance to the node at i. This will eventually create
 a permutation within the solution.
-![image-20200426192631311](/public/images/projects/Travelling-Salesman-problem/Greedy.png)
+![image-20200426192631311](/images/projects/Travelling-Salesman-problem/Greedy.png)
 
 #### 2-Approximation Algorithm
 
@@ -68,11 +68,11 @@ This is a bit sophisticated method, but requires the **graph to follow the trian
 We start by computing an MST (minimum spanning tree) whose weight is a lower bound on the length of an optimal TSP tour. Then, use this MST to build a tour whose cost is no more than twice that of MST's weight as long as the cost function satisfies the triangle inequality.
 
 This website  provides a better explanation and mathematics proof for more details http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/AproxAlgor/TSP/tsp.htm
-![image-20200426192631311](/public/images/projects/Travelling-Salesman-problem/Minimum Spanning Tree.png)
+![image-20200426192631311](/images/projects/Travelling-Salesman-problem/Minimum Spanning Tree.png)
 ### Christofides Algorithm
 
 To tackle this, I did some research and found Christofide’s algorithm to be quite interesting which matched the above requirements. It claims to guarantee a solution within 1.5 errors.
-![image-20200426192631311](/public/images/projects/Travelling-Salesman-problem/Christofide.png)
+![image-20200426192631311](/images/projects/Travelling-Salesman-problem/Christofide.png)
 
 #### Algorithm
 
@@ -138,4 +138,4 @@ I have written the details for testing, in the test.py file followed by the high
 
 Here is the overview:
 
-![image-20200426192631311](/public/images/projects/Travelling-Salesman-problem/image-20200426192631311.png)
+![image-20200426192631311](/images/projects/Travelling-Salesman-problem/image-20200426192631311.png)

@@ -1,7 +1,7 @@
 ---
 title: "MBTI-Personality-Classifier"
 description: "A model which uses your social media posting predict your MBTI personality type."
-image: "/public/images/projects/MBTI-Personality-Classifier/Divy.png"
+image: "/images/projects/MBTI-Personality-Classifier/Divy.png"
 tags: 
 - bayesian-methods
 - kaggle
@@ -27,7 +27,7 @@ date: 2023-12-17T05:42:36Z
 html_url: "https://github.com/TGDivy/MBTI-Personality-Classifier"
 forks_count: 17
 stargazers_count: 51
-size: 977
+size: 953
 watchers_count: 51
 ---
 
@@ -48,7 +48,7 @@ The data was imported from Kaggle: https://www.kaggle.com/datasnaek/mbti-type
 The tokenization was done using NLTK toolk, and the model was based on Bayesian Model in Natural Language processing.
 
 For this particular problem, i trained 4 separte models each one predicted one of the attributes. The final output is based on percentage certainty the model has. 
-![Divy Bramhecha Personality Type by the classifier when feed in quora answers](/public/images/projects/MBTI-Personality-Classifier/Divy.png)
+![Divy Bramhecha Personality Type by the classifier when feed in quora answers](/images/projects/MBTI-Personality-Classifier/Divy.png)
 (Output using matplotlib)
 This worked quite well in classifying my personality type, It's INTJ, although you can see that the F:J is 55:45 which is quite close. Unfortunately, some of the personality types had a lot more data, and so the model often fails to classify a personality with the lower end.
 
