@@ -28,11 +28,10 @@ const {
 <div
   class={"relative flex w-full flex-col rounded-xl bg-white text-gray-700 transition-all duration-500 ease-in-out hover:border-slate-700 border-2 border-transparent group"}
 >
-  <div
-    class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40 h-[230px] min-h-[230px] max-h-[230px]"
-  >
-    {
-      image && (
+  {
+    image && (
+      <div class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40 h-[230px] min-h-[230px] max-h-[230px]">
+        image && (
         <a
           href={`/${slug}`}
           class="rounded-lg block hover:text-primary overflow-hidden"
@@ -46,9 +45,10 @@ const {
             height={230}
           />
         </a>
-      )
-    }
-  </div>
+        )
+      </div>
+    )
+  }
   <div class="p-6 h-full flex flex-col">
     <div class="flex items-center justify-between mb-3">
       <h5
