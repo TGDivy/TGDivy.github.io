@@ -22,6 +22,7 @@ const projectCollection = defineCollection({
     image: z.string().optional(),
 
     title: z.string(),
+    meta_title: z.string().optional(),
     description: z.string().optional(),
     tags: z.array(z.string()).default([]),
 
@@ -121,4 +122,5 @@ export const collections = {
   pages: pagesCollection,
   authors: authorsCollection,
   projects: projectCollection,
+  about: aboutCollection,
 };

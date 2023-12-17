@@ -2,7 +2,7 @@
 title: "Towards Semi Supervised Named Entity Recognition"
 description: "Named Entity Recognition can be very useful to perform downstream tasks like classification, increase efficiancy for search algorithms, build powerful content recommendation systems or browse through information quickly!"
 date: 2021-08-25T05:00:00Z
-image: "https://github.com/TGDivy/OldPortfolio/blob/main/images/important_words/Overview.png"
+image:  "/images/posts/Overview.png"
 categories: ["machine learning"]
 authors: ["divy-b"]
 tags: ["machine learning", "python", "nlp"]

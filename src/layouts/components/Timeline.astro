@@ -1,11 +1,11 @@
 ---
 interface Props {
   timeline: {
-    label: string;
+    label?: string;
     content: {
-      date: string;
-      title: string;
-      description: string;
+      date?: string;
+      title?: string;
+      description?: string;
     }[];
   }[];
 }
@@ -19,9 +19,9 @@ const { timeline } = props;
     timeline.map((item) => {
       return (
         <div class="relative pl-8 sm:pl-32 py-4 group">
-          <div class="font-caveat font-medium text-2xl text-indigo-500 mb-1 sm:mb-0">
+          <h3 class="font-caveat font-medium  text-indigo-500 mb-1 sm:mb-0">
             {item.label}
-          </div>
+          </h3>
           {item.content.map((content) => {
             return (
               <div class="py-2">
@@ -30,7 +30,7 @@ const { timeline } = props;
                     {new Intl.DateTimeFormat("en-GB", {
                       month: "short",
                       year: "numeric",
-                    }).format(new Date(content.date))}
+                    }).format(new Date(content.date || "0/0/0"))}
                   </time>
                   {content.title && (
                     <h4 class="text-xl font-bold text-slate-900">

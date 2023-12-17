@@ -1,4 +1,4 @@
-import { slug } from 'github-slugger';
+import { slug } from "github-slugger";
 import { marked } from "marked";
 
 // slugify
@@ -22,9 +22,12 @@ export const humanize = (content: string) => {
   return content
     .replace(/^[\s_]+|[\s_]+$/g, "")
     .replace(/[_\s]+/g, " ")
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2") // split camel case and add hyphen
     .replace(/^[a-z]/, function (m) {
       return m.toUpperCase();
-    });
+    })
+    .trim()
+    .replace(/-/g, " ");
 };
 
 // plainify
@@ -51,7 +54,7 @@ const htmlEntityDecoder = (htmlWithEntities: string): string => {
     /(&amp;|&lt;|&gt;|&quot;|&#39;)/g,
     (entity: string): string => {
       return entityList[entity];
-    }
+    },
   );
   return htmlWithoutEntities;
 };

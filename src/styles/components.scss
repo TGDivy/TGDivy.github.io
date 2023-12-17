@@ -9,7 +9,7 @@
 }
 
 .large-container {
-  @apply max-w-[1300px] px-4 md:px-8;
+  @apply container max-w-[1300px];
 }
 
 // page heading
@@ -60,13 +60,18 @@
 
 // a completely different social icon style
 .social-icons-on-dark {
-  @apply space-x-4;
+  @apply space-x-2;
   li {
     @apply inline-block;
-    a {
-      @apply block h-11 w-11 rounded-lg text-center transition hover:border-primary hover:bg-primary hover:text-white border-x-gray-500 bg-slate-200 text-slate-900;
+    a,
+    div {
+      @apply flex gap-1 items-center rounded-lg text-center transition hover:border-primary hover:bg-primary hover:text-white border-x-gray-500 bg-slate-200 text-slate-900 py-0 px-3;
       svg {
         @apply m-auto h-11 text-base w-5;
+      }
+      // count/number
+      span {
+        @apply block text-sm;
       }
     }
   }

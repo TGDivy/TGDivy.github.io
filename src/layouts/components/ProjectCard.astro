@@ -1,0 +1,140 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { IoEye, IoGitNetwork, IoLogoGithub, IoStar } from "react-icons/io5";
+import { Image } from "astro:assets";
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { data, slug, id } = project;
+const {
+  title,
+  description,
+  image,
+  stargazers_count,
+  created_at,
+  updated_at,
+  tags,
+  forks_count,
+  size,
+  watchers_count,
+  html_url,
+} = data;
+
+// const image = `https://picsum.photos/seed/${slug}/400/300`;
+---
+
+<div
+  class={"relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg h-fit transition-all duration-500 ease-in-out hover:shadow-lg hover:border-slate-700 border-2 group"}
+>
+  <div
+    class="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40"
+  >
+    {
+      image && (
+        <>
+          <a
+            href={`/${slug}`}
+            class="rounded-lg block hover:text-primary overflow-hidden"
+          >
+            <Image
+              class="group-hover:scale-[1.03] transition duration-300 w-full"
+              src={image}
+              alt={title}
+              transition:name={`project-${id}`}
+              width={445}
+              height={230}
+            />
+          </a>
+        </>
+      )
+    }
+  </div>
+  <div class="p-6">
+    <div class="flex items-center justify-between mb-3">
+      <h5
+        class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900"
+      >
+        <a
+          href={`/${project.slug}`}
+          class="block hover:text-primary transition duration-300"
+        >
+          {title}
+        </a>
+      </h5>
+      <p
+        class="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased"
+      >
+        <a
+          href={`${html_url}/stargazers`}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          class="flex items-center gap-1.5 hover:text-yellow-700 transition duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="-mt-0.5 h-5 w-5"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+              clip-rule="evenodd"></path>
+          </svg>
+          {stargazers_count}
+        </a>
+      </p>
+    </div>
+    <p
+      class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700"
+    >
+      <a
+        href={`/${project.slug}`}
+        class="block hover:text-primary transition duration-300"
+      >
+        {description}
+      </a>
+    </p>
+    <ul class={"social-icons-on-dark mt-4"}>
+      <li>
+        <a
+          aria-label="github project link"
+          href={html_url}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <IoLogoGithub class="w-5 h-5 text-gray-900" />
+        </a>
+      </li>
+
+      <li>
+        <a
+          aria-label="github watcher link"
+          href={`${html_url}/watchers`}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <IoEye class="w-5 h-5 text-gray-900" />
+          <span>
+            {watchers_count}
+          </span>
+        </a>
+      </li>
+      <li>
+        <a
+          aria-label="github fork link"
+          href={`${html_url}/fork`}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <IoGitNetwork class="w-5 h-5 text-gray-900" />
+          <span>
+            {forks_count}
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -78,10 +78,10 @@ const extra = [
       class="col-span-12 lg:col-span-4 lg:block static lg:sticky lg:h-screen top-60"
     >
       <InfoCard
-        title={meta_title}
-        subtitle={professional_title}
+        title={meta_title || "Divy B"}
+        subtitle={professional_title || "Software Engineer"}
         social={social}
-        image={image}
+        image={image || ""}
         extra={extra}
       />
     </div>
@@ -98,32 +98,34 @@ const extra = [
             <Content />
           </div>
         </div>
-        <div class="pb-12 px-2 sm:px-5 md:px-10 lg:px-14">
-          <h3 class="mb-3 font-semibold dark:text-white">
-            {what_i_do.title}
-          </h3>
-          <div class="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
-            {
-              what_i_do.items.map((item: any, index: number) => (
-                <div
-                  class={`flex gap-4 rounded-xl p-6 border-slate-70 opacity-95 ${
-                    colors[index % colors.length]
-                  } transition-all duration-500 ease-in-out hover:shadow-lg hover:border-slate-700 border-2`}
-                >
-                  <div class="space-y-2">
-                    <h5 class="font-semibold">{item.title}</h5>
-                    <p class="text-sm text-slate-700">{item.description}</p>
+        {
+          what_i_do && (
+            <div class="pb-12 px-2 sm:px-5 md:px-10 lg:px-14">
+              <h3 class="mb-3 font-semibold dark:text-white">
+                {what_i_do.title}
+              </h3>
+              <div class="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+                {what_i_do.items.map((item: any, index: number) => (
+                  <div
+                    class={`flex gap-4 rounded-xl p-6 border-slate-70 opacity-95 ${
+                      colors[index % colors.length]
+                    } transition-all duration-500 ease-in-out hover:shadow-lg hover:border-slate-700 border-2`}
+                  >
+                    <div class="space-y-2">
+                      <h5 class="font-semibold">{item.title}</h5>
+                      <p class="text-sm text-slate-700">{item.description}</p>
+                    </div>
                   </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
+                ))}
+              </div>
+            </div>
+          )
+        }
       </div>
       <div
         class="lg:pt-10 md:pt-10 px-2 sm:px-5 md:px-10 lg:px-14 overflow-hidden"
       >
-        <Timeline timeline={timeline} />
+        {timeline && <Timeline timeline={timeline} />}
       </div>
     </div>
   </div>

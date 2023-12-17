@@ -7,6 +7,11 @@
     "allowSyntheticDefaultImports": true,
     "types": ["astro/client"],
     "strictNullChecks": true,
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
     "paths": {
       "@layouts/*": ["./src/layouts/*"],
       "@components/*": ["./src/layouts/components/*"],
