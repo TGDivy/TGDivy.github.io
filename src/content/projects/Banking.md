@@ -1,7 +1,7 @@
 ---
 title: "Banking"
 description: "Round Up functionality for daily transactions using Starling Bank API - Divy Bramhecha"
-image: "/public/images/projects/Banking/"
+image: "/public/images/projects/Banking/main_page.png"
 tags: 
 - banking
 - full-stack
@@ -94,6 +94,6 @@ run `./start.sh` from the root directory to install dependencies both frontend a
 
 ## App Demo Screenshots
 
-![Main Page](/public/images/projects/Banking/)
-![Pending Round Ups](/public/images/projects/Banking/)
-![Completed Round Ups](/public/images/projects/Banking/)
+![Main Page](/public/images/projects/Banking/main_page.png)
+![Pending Round Ups](/public/images/projects/Banking/pending_roundup.png)
+![Completed Round Ups](/public/images/projects/Banking/completed_roundup.png)
