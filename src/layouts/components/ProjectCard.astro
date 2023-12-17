@@ -1,8 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { IoEye, IoGitNetwork, IoLogoGithub, IoStar } from "react-icons/io5";
-import { Image } from "astro:assets";
 import { humanize } from "@lib/utils/textConverter";
+import { Image } from "astro:assets";
+import { IoEye, IoGitNetwork, IoLogoGithub } from "react-icons/io5/index.js";
+
 interface Props {
   project: CollectionEntry<"projects">;
 }
@@ -22,8 +23,6 @@ const {
   watchers_count,
   html_url,
 } = data;
-// const image = "";
-// const image = `https://picsum.photos/seed/${slug}/400/300`;
 ---
 
 <div
