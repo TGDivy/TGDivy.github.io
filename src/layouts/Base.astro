@@ -30,8 +30,21 @@ const { title, meta_title, description, image, noindex, canonical } =
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- favicon -->
     <ViewTransitions />
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-S9V0JHXDTF"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-S9V0JHXDTF");
+    </script>
+
     <link rel="shortcut icon" href={config.site.favicon} />
     <!-- theme meta -->
     <meta name="theme-name" content="bookworm-light-astro" />
