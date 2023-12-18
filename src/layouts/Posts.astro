@@ -6,6 +6,13 @@ import { humanize, slugify } from "@lib/utils/textConverter";
 import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi/index.js";
 import MyAvatar from "./components/special/MyAvatar.astro";
 import Card from "./components/basic/Card.astro";
+
+interface Props {
+  className?: string;
+  posts: any;
+  fluid?: boolean;
+}
+
 const { summary_length } = config.settings;
 const { className, posts, fluid } = Astro.props;
 ---
@@ -17,21 +24,18 @@ const { className, posts, fluid } = Astro.props;
 >
   {
     posts.map((post: any, i: number) => (
-      <div class={i === 0 && fluid != false ? "col-12" : "col-12 sm:col-6"}>
+      <div
+        class={i === 0 && fluid ? "col-12" : "col-12 sm:col-6"}
+        transition:name={`posts-${post.id}`}
+      >
         <Card
           imageUrl={post.data.image}
           href={`/${post.slug}`}
           imageTransition={`posts-image-${post.id}`}
+          titleTransition={`posts-title-${post.id}`}
         >
-          <ul class="mt-6 mb-4 flex flex-wrap items-center text-text">
-            <li class="mr-2">
-              <MyAvatar />
-            </li>
-            <li class="mr-2 flex items-center flex-wrap font-medium">
-              <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
-              <>{dateFormat(post.data.date)}</>
-            </li>
-            <li class="mr-1 flex items-center flex-wrap">
+          <ul class="mt-2 mb-4 flex items-center text-text flex-nowrap">
+            <li class="mr-2 flex items-center flex-wrap">
               <BiCategoryAlt className="mr-1 h-[18px] w-[18px] text-gray-600" />
               <>
                 <ul>
@@ -48,6 +52,10 @@ const { className, posts, fluid } = Astro.props;
                   ))}
                 </ul>
               </>
+            </li>
+            <li class="mr-2 flex items-center flex-wrap font-medium">
+              <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
+              <>{dateFormat(post.data.date)}</>
             </li>
           </ul>
           <h3 class="mb-4">

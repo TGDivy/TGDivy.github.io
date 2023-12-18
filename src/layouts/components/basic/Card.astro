@@ -30,51 +30,56 @@ const borderClass = bordered
 ---
 
 <div
-  class={`relative flex flex-col w-full rounded-xl bg-white text-gray-700 transition-all duration-500 ease-in-out group ${borderClass}`}
+  class={`relative flex flex-col w-full rounded-xl bg-white text-gray-700 transition-all duration-500 ease-in-out group ${borderClass} h-full`}
 >
   {
     imageUrl && (
-      <div class="relative overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40 h-[230px] min-h-[230px] max-h-[230px]">
-        <a
-          href={href}
-          class="rounded-lg block hover:text-primary overflow-hidden"
-        >
-          <Image
-            class="group-hover:scale-[1.03] transition duration-300 w-full object-cover h-[230px] object-center"
-            src={imageUrl}
-            alt={title || "Image"}
-            transition:name={imageTransition}
-            width={445}
-            height={330}
-          />
-        </a>
-      </div>
+      <a
+        href={href}
+        class="block hover:text-primary relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40 h-[230px] min-h-[230px] max-h-[230px]"
+      >
+        <Image
+          class="group-hover:scale-[1.03] transition duration-300 min-h-[230px]"
+          src={imageUrl}
+          alt={imageUrl}
+          transition:name={imageTransition}
+          width={445}
+          height={330}
+        />
+      </a>
     )
   }
   <div class="p-6 h-full flex flex-col">
     {
       title && (
         <div class="flex items-center justify-between mb-3">
-          <h5 class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
+          <h5
+            class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900"
+            transition:name={titleTransition}
+          >
             <a
-              href={`/${href}`}
-              transition:name={titleTransition}
+              href={href}
               class="block hover:text-primary transition duration-300"
             >
               {humanize(title)}
             </a>
           </h5>
+          <slot name="extra" />
         </div>
       )
     }
-    <p
-      class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700 flex-1"
-    >
-      <a href={href} class="block hover:text-primary transition duration-300">
-        {description}
-      </a>
-    </p>
+    {
+      description && (
+        <p class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700 flex-1">
+          <a
+            href={href}
+            class="block hover:text-primary transition duration-300"
+          >
+            {description}
+          </a>
+        </p>
+      )
+    }
     <slot />
-    {Astro.slots.extra && <div class="mt-4">{Astro.slots.extra}</div>}
   </div>
 </div>

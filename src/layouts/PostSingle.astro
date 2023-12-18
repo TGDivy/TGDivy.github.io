@@ -77,9 +77,7 @@ const { title, description, categories, image, date, tags } = post.data;
           <Content />
         </div>
         <div class="flex flex-wrap items-center justify-between">
-          <ul class="mr-4 mb-4 space-x-3">
-            <Tags tags={tags} counts />
-          </ul>
+          <Tags tags={tags} counts />
           <Share
             className="social-share mb-4"
             title={title}

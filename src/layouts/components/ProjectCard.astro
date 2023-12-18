@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import { humanize } from "@lib/utils/textConverter";
 import { Image } from "astro:assets";
 import { IoEye, IoGitNetwork, IoLogoGithub } from "react-icons/io5/index.js";
+import Card from "./basic/Card.astro";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -25,111 +26,78 @@ const {
 } = data;
 ---
 
-<div
-  class={"relative flex w-full flex-col rounded-xl bg-white text-gray-700 transition-all duration-500 ease-in-out hover:border-slate-700 border-2 border-transparent group"}
+<Card
+  title={title}
+  description={description}
+  imageUrl={image}
+  href={`/${slug}`}
+  imageTransition={`project-image-${id}`}
+  titleTransition={`project-title-${id}`}
+  bordered
 >
-  {
-    image && (
+  <ul class={"social-icons-on-dark mt-4"}>
+    <li>
       <a
-        href={`/${slug}`}
-        class="block hover:text-primary relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40 h-[230px] min-h-[230px] max-h-[230px]"
+        aria-label="github project link"
+        href={html_url}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
       >
-        <Image
-          class="group-hover:scale-[1.03] transition duration-300 min-h-[230px]"
-          src={image}
-          alt={title}
-          transition:name={`project-image-${id}`}
-          width={445}
-          height={330}
-        />
+        <IoLogoGithub class="w-5 h-5 text-gray-900" />
       </a>
-    )
-  }
-  <div class="p-6 h-full flex flex-col">
-    <div class="flex items-center justify-between mb-3">
-      <h5
-        class="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900"
+    </li>
+
+    <li>
+      <a
+        aria-label="github watcher link"
+        href={`${html_url}/watchers`}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
       >
-        <a
-          href={`/${project.slug}`}
-          transition:name={`project-title-${id}`}
-          class="block hover:text-primary transition duration-300"
-        >
-          {humanize(title)}
-        </a>
-      </h5>
-      <p
-        class="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased"
+        <IoEye class="w-5 h-5 text-gray-900" />
+        <span>
+          {watchers_count}
+        </span>
+      </a>
+    </li>
+    <li>
+      <a
+        aria-label="github fork link"
+        href={`${html_url}/fork`}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
       >
-        <a
-          href={`${html_url}/stargazers`}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          class="flex items-center gap-1.5 hover:text-yellow-700 transition duration-300"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="-mt-0.5 h-5 w-5"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-              clip-rule="evenodd"></path>
-          </svg>
-          {stargazers_count}
-        </a>
-      </p>
-    </div>
+        <IoGitNetwork class="w-5 h-5 text-gray-900" />
+        <span>
+          {forks_count}
+        </span>
+      </a>
+    </li>
+  </ul>
+
+  <slot name="extra" slot="extra">
     <p
-      class="block font-sans text-base antialiased font-light leading-relaxed text-gray-700 flex-1"
+      class="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased"
     >
       <a
-        href={`/${project.slug}`}
-        class="block hover:text-primary transition duration-300"
+        href={`${html_url}/stargazers`}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        class="flex items-center gap-1.5 hover:text-yellow-700 transition duration-300"
       >
-        {description}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="-mt-0.5 h-5 w-5"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+            clip-rule="evenodd"></path>
+        </svg>
+        {stargazers_count}
       </a>
     </p>
-    <ul class={"social-icons-on-dark mt-4"}>
-      <li>
-        <a
-          aria-label="github project link"
-          href={html_url}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-        >
-          <IoLogoGithub class="w-5 h-5 text-gray-900" />
-        </a>
-      </li>
-
-      <li>
-        <a
-          aria-label="github watcher link"
-          href={`${html_url}/watchers`}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-        >
-          <IoEye class="w-5 h-5 text-gray-900" />
-          <span>
-            {watchers_count}
-          </span>
-        </a>
-      </li>
-      <li>
-        <a
-          aria-label="github fork link"
-          href={`${html_url}/fork`}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-        >
-          <IoGitNetwork class="w-5 h-5 text-gray-900" />
-          <span>
-            {forks_count}
-          </span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
+  </slot>
+</Card>

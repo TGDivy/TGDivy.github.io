@@ -101,6 +101,8 @@ print s
 
 ### Blockquote
 
+> Hi, This is super cool!
+> 
 > This is a blockquote example.
 
 ---
