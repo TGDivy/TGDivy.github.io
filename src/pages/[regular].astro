@@ -3,15 +3,12 @@ import Base from "@layouts/Base.astro";
 import Default from "@layouts/Default.astro";
 import PostSingle from "@layouts/PostSingle.astro";
 import ProjectSingle from "@layouts/ProjectSingle.astro";
-import { getSinglePage } from "@lib/contentParser.astro";
-
-const getPosts = await getSinglePage("posts");
-const postsSlug = getPosts.map((item) => item.slug);
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getSinglePage("posts");
-  const pages = await getSinglePage("pages");
-  const projects = await getSinglePage("projects");
+  const posts = await getCollection("posts");
+  const pages = await getCollection("pages");
+  const projects = await getCollection("projects");
 
   const allPages = [...pages, ...posts, ...projects];
 
@@ -26,7 +23,7 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props;
 const { data, collection } = page;
-const { title, meta_title, description, image } = page.data;
+const { title, meta_title, description, image } = data;
 ---
 
 <Base

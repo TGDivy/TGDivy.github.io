@@ -1,14 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import Share from "@components/Share.astro";
-import SimilarPosts from "@components/SimilarPosts.astro";
-import { getSinglePage } from "@lib/contentParser.astro";
-import dateFormat from "@lib/utils/dateFormat";
-import similerItems from "@lib/utils/similarItems";
-import { humanize, markdownify, slugify } from "@lib/utils/textConverter";
-import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi/index.js";
-import { getCollection, type CollectionEntry } from "astro:content";
-import SimilarProjects from "./components/SimilarProjects.astro";
+import { type CollectionEntry } from "astro:content";
 import "src/styles/markdown.scss";
 import ProjectInfoCard from "./components/ProjectInfoCard.astro";
 
@@ -18,13 +9,9 @@ interface Props {
 
 const { project } = Astro.props;
 
-const { data, id, slug } = project;
-const { title, description, image, date, tags, categories, authors } = data;
-const allAuthor = await getSinglePage("authors");
-const author = allAuthor.find((author) => author.slug === authors[0]);
+// const projects = await getCollection("projects");
+// const similarProjects = similerItems(project, projects, slug);
 
-const projects = await getCollection("projects");
-const similarProjects = similerItems(project, projects, slug);
 const { Content } = await project.render();
 ---
 
@@ -46,14 +33,18 @@ const { Content } = await project.render();
       </div>
     </article>
   </div>
-  {
+  <!-- {
     similarProjects.length > 0 && (
       <section class="section pt-0">
         <div class="large-container">
           <h2 class="mb-4 text-center h3">Similar Posts</h2>
-          <SimilarProjects projects={similarProjects.slice(0, 3)} />
+          <div class="gy-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {projects.map((project, i: number) => (
+              <ProjectCard project={project} />
+            ))}
+          </div>
         </div>
       </section>
     )
-  }
+  } -->
 </section>

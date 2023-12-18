@@ -1,23 +1,13 @@
 ---
-import { Image } from "astro:assets";
-import config from "@config/config.json";
-import { getSinglePage } from "@lib/contentParser.astro";
-import dateFormat from "@lib/utils/dateFormat";
-import { humanize, slugify } from "@lib/utils/textConverter";
-import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi/index.js";
 import type { CollectionEntry } from "astro:content";
 import ProjectCard from "./components/ProjectCard.astro";
-import Masonry from "./components/Masonry.astro";
-const authors = await getSinglePage("authors");
-const { summary_length } = config.settings;
+import Masonry from "./components/basic/Masonry.astro";
 
 interface Props {
   projects: CollectionEntry<"projects">[];
-  fluid?: boolean;
-  className?: string;
 }
 
-const { className, projects, fluid } = Astro.props;
+const { projects } = Astro.props;
 
 const new_projects = projects.map((project) => {
   return {

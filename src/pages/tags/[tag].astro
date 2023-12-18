@@ -1,15 +1,18 @@
 ---
 import Base from "@layouts/Base.astro";
 import Posts from "@layouts/Posts.astro";
-import { getSinglePage } from "@lib/contentParser.astro";
+import Projects from "@layouts/Projects.astro";
 import { getTaxonomy } from "@lib/taxonomyParser.astro";
 import taxonomyFilter from "@lib/utils/taxonomyFilter";
-import { humanize } from "@lib/utils/textConverter";
+import { humanize, slugify } from "@lib/utils/textConverter";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const tags = await getTaxonomy("posts", "tags");
+  const tagsProject = await getTaxonomy("projects", "tags");
+  const tagsAll = [...tags, ...tagsProject];
 
-  return tags.map((tag) => {
+  return tagsAll.map((tag) => {
     return {
       params: { tag },
     };
@@ -18,8 +21,12 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 
-const posts = await getSinglePage("posts");
-const filterByTags = taxonomyFilter(posts, "tags", tag);
+const posts = await getCollection("posts");
+const projects = await getCollection("projects");
+
+const allPosts = [...posts, ...projects];
+
+const filterByTags = taxonomyFilter(allPosts, "tags", tag);
 
 const title = humanize(tag || "");
 ---
@@ -29,7 +36,7 @@ const title = humanize(tag || "");
     <div class="container">
       <p class="text-center mb-4">Showing Posts From</p>
       <h1 class="h2 mb-16 text-center text-primary">{title}</h1>
-      <Posts posts={filterByTags} fluid={false} />
+      <Projects projects={filterByTags} />
     </div>
   </div>
 </Base>

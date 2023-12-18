@@ -14,7 +14,7 @@
 
 // page heading
 .page-heading {
-  @apply mb-20 text-center font-bold leading-10;
+  @apply mb-8 text-center font-bold leading-10;
   &:after {
     @apply mx-auto mt-4 block h-1 w-10 rounded-full bg-primary content-[''];
   }

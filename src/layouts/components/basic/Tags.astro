@@ -1,0 +1,79 @@
+---
+import { getTaxonomy } from "@lib/taxonomyParser.astro";
+import { humanize, slugify } from "@lib/utils/textConverter";
+import { getCollection } from "astro:content";
+import { sl } from "date-fns/locale";
+import { FaHashtag } from "react-icons/fa/index.js";
+interface Props {
+  tags: (string | null)[];
+  counts?: boolean;
+  size?: "sm" | "md" | "lg";
+  limit?: number;
+}
+
+const { tags, counts, size: _size } = Astro.props;
+
+const size = _size || "md";
+
+let slugifiedTags = tags.map((tag) => slugify(tag || ""));
+
+const posts = await getCollection("posts");
+const projects = await getCollection("projects");
+
+const allPosts = [...posts, ...projects];
+
+let tagCounts: Record<string, number> = {};
+allPosts.forEach((post) => {
+  const tags = post.data.tags;
+
+  tags.forEach((tag) => {
+    const slugifiedTag = slugify(tag || "");
+    if (tagCounts[slugifiedTag]) {
+      tagCounts[slugifiedTag] += 1;
+    } else {
+      tagCounts[slugifiedTag] = 1;
+    }
+  });
+});
+
+slugifiedTags.sort((a, b) => {
+  return tagCounts[b] - tagCounts[a] || a.localeCompare(b);
+});
+
+// remove duplicates
+slugifiedTags = slugifiedTags.filter(
+  (tag, index) => slugifiedTags.indexOf(tag) === index,
+);
+
+const padding = {
+  sm: "px-2 py-1",
+  md: "px-3 py-1.5",
+  lg: "px-4 py-2",
+};
+
+const fontSize = {
+  sm: "text-xs",
+  md: "text-sm",
+  lg: "text-base",
+};
+
+const classString = `rounded-lg bg-slate-200 text-dark transition hover:bg-primary hover:text-white flex items-center group ${padding[size]} ${fontSize[size]}`;
+---
+
+<ul class="space-x-2 space-y-2">
+  {
+    slugifiedTags.map((tag) => (
+      <li class="inline-block">
+        <a href={`/tags/${tag}`} class={classString}>
+          <FaHashtag className="mr-1 text-primary group-hover:text-white transition" />
+          <>{humanize(tag || "")}</>
+          {counts && (
+            <div class="ml-2 text-white group-hover:text-primary group-hover:bg-white transition rounded-full bg-primary px-1 text-xs">
+              {tagCounts[tag || ""] || 0}
+            </div>
+          )}
+        </a>
+      </li>
+    ))
+  }
+</ul>

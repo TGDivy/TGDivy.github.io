@@ -1,0 +1,9 @@
+---
+import config from "@config/config.json";
+import Avatar from "../basic/Avatar.astro";
+---
+
+<Avatar
+  text={`${config.metadata.firstname} ${config.metadata.lastname[0]}`}
+  image_url={config.metadata.meta_image}
+/>

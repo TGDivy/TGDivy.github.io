@@ -1,25 +1,24 @@
 ---
 import { Image } from "astro:assets";
-import Share from "@components/Share.astro";
-import SimilarPosts from "@components/SimilarPosts.astro";
-import { getSinglePage } from "@lib/contentParser.astro";
+import Share from "@layouts/components/basic/Share.astro";
+import SimilarPosts from "@layouts/components/post/SimilarPosts.astro";
 import dateFormat from "@lib/utils/dateFormat";
 import similerItems from "@lib/utils/similarItems";
 import { humanize, markdownify, slugify } from "@lib/utils/textConverter";
 import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi/index.js";
-import type { CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
+import MyAvatar from "./components/special/MyAvatar.astro";
+import Tags from "./components/basic/Tags.astro";
 
 interface Props {
   post: CollectionEntry<"posts">;
 }
 
-const allAuthors = await getSinglePage("authors");
-const posts = await getSinglePage("posts");
+const posts = await getCollection("posts");
 const { post } = Astro.props;
 const similarPosts = similerItems(post, posts, post.slug);
 const { Content } = await post.render();
-const { title, description, authors, categories, image, date, tags } =
-  post.data;
+const { title, description, categories, image, date, tags } = post.data;
 ---
 
 <section class="section">
@@ -29,31 +28,7 @@ const { title, description, authors, categories, image, date, tags } =
         <h1 set:html={markdownify(title)} class="h2" />
         <ul class="mt-4 flex flex-wrap items-center justify-center text-text">
           <li class="mx-3">
-            {
-              allAuthors
-                .filter((author) =>
-                  authors
-                    .map((author: string) => slugify(author))
-                    .includes(slugify(author.data.title)),
-                )
-                .map((author, i) => (
-                  <a
-                    href={`/authors/${slugify(author.slug)}`}
-                    class="flex items-center hover:text-primary font-medium"
-                  >
-                    {author.data.image && (
-                      <Image
-                        src={author.data.image}
-                        alt={author.data.title}
-                        height={50}
-                        width={50}
-                        class="mr-2 h-6 w-6 rounded-full"
-                      />
-                    )}
-                    <span>{author.data.title}</span>
-                  </a>
-                ))
-            }
+            <MyAvatar />
           </li>
           <li class="mx-3 flex items-center flex-wrap font-medium">
             <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
@@ -91,7 +66,7 @@ const { title, description, authors, categories, image, date, tags } =
               width={1000}
               alt={title}
               class="rounded-lg"
-              transition:name={`record-${post.id}`}
+              transition:name={`posts-image-${post.id}`}
             />
           )
         }
@@ -103,18 +78,7 @@ const { title, description, authors, categories, image, date, tags } =
         </div>
         <div class="flex flex-wrap items-center justify-between">
           <ul class="mr-4 mb-4 space-x-3">
-            {
-              tags.map((tag: string) => (
-                <li class="inline-block">
-                  <a
-                    href={`/tags/${slugify(tag)}`}
-                    class="block rounded-lg bg-theme-light px-4 py-2 font-semibold text-dark text-sm hover:text-primary transition duration-300"
-                  >
-                    #{humanize(tag)}
-                  </a>
-                </li>
-              ))
-            }
+            <Tags tags={tags} counts />
           </ul>
           <Share
             className="social-share mb-4"

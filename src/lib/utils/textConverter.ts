@@ -3,8 +3,6 @@ import { marked } from "marked";
 
 // slugify
 export const slugify = (content: string) => {
-  if (!content) return null;
-
   return slug(content);
 };
 

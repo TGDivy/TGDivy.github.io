@@ -27,7 +27,6 @@ data.forEach((item) => {
   // Add 1 for every 100 characters of text
   sizeScore += Math.ceil(content.length / 100);
   item.sizeScore = sizeScore;
-  console.log(item.project.data.title, sizeScore);
 });
 
 // Sort items by size score

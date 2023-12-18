@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import Base from "@layouts/Base.astro";
 import { markdownify } from "@lib/utils/textConverter";
 import { getEntryBySlug } from "astro:content";
-import Social from "@layouts/components/Social.astro";
+import Social from "@layouts/components/basic/Social.astro";
 import social from "@config/social.json";
 import config from "@config/config.json";
 import {
@@ -13,9 +13,8 @@ import {
   IoLocation,
   IoMail,
 } from "react-icons/io5/index.js";
-import Timeline from "@layouts/components/Timeline.astro";
+import Timeline from "@layouts/components/basic/Timeline.astro";
 import InfoCard from "@layouts/components/InfoCard.astro";
-import TimelineProgress from "@layouts/components/TimelineProgress.astro";
 import type { CollectionEntry } from "astro:content";
 
 const entry: CollectionEntry<"about"> = await getEntryBySlug("about", "index");

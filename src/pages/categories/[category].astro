@@ -1,27 +1,27 @@
 ---
 import Base from "@layouts/Base.astro";
 import Posts from "@layouts/Posts.astro";
-import { getSinglePage } from "@lib/contentParser.astro";
 import { getTaxonomy } from "@lib/taxonomyParser.astro";
 import taxonomyFilter from "@lib/utils/taxonomyFilter";
-import { humanize } from "@lib/utils/textConverter";
+import { humanize, slugify } from "@lib/utils/textConverter";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const categories = await getTaxonomy("posts", "categories");
 
   return categories.map((category) => {
     return {
-      params: { category },
+      params: { category: slugify(category) },
     };
   });
 }
 
 const { category } = Astro.params;
 
-const posts = await getSinglePage("posts");
+const posts = await getCollection("posts");
 const filterByCategory = taxonomyFilter(posts, "categories", category);
 
-const title = humanize(category || "")
+const title = humanize(category || "");
 ---
 
 <Base title={title || "Category"}>

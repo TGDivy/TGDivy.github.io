@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  text: string;
+  image_url: string;
+}
+
+const { text, image_url } = Astro.props;
+---
+
+<Image
+  src={image_url}
+  alt={text}
+  height={50}
+  width={50}
+  class="mr-2 h-6 w-6 rounded-full"
+/>
+<span>{text}</span>
