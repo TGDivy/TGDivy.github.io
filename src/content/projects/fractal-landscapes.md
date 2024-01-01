@@ -3,11 +3,12 @@ title: "fractal-landscapes"
 description: "Fractal logic used to develop and design beautiful scenery, special applications for background design in for 2-d side scroller games."
 image: "/images/projects/fractal-landscapes/Final.png"
 tags: 
-- computer-g
+- computer-graphics
 - fractals
+- haskell
 created_at: 2019-01-03T11:16:16Z
-updated_at: 2023-12-17T05:23:36Z
-date: 2023-12-17T05:23:36Z
+updated_at: 2023-12-17T17:44:02Z
+date: 2023-12-17T17:44:02Z
 html_url: "https://github.com/TGDivy/fractal-landscapes"
 forks_count: 2
 stargazers_count: 2
