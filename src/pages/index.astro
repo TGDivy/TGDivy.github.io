@@ -1,21 +1,17 @@
 ---
-import { Image } from "astro:assets";
-import Base from "@layouts/Base.astro";
-import { markdownify } from "@lib/utils/textConverter";
-import { getEntryBySlug } from "astro:content";
-import Social from "@layouts/components/basic/Social.astro";
-import social from "@config/social.json";
 import config from "@config/config.json";
+import social from "@config/social.json";
+import Base from "@layouts/Base.astro";
+import InfoCard from "@layouts/components/InfoCard.astro";
+import Timeline from "@layouts/components/basic/Timeline.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection, getEntryBySlug } from "astro:content";
 import {
   IoCalendar,
   IoCall,
-  IoGift,
   IoLocation,
   IoMail,
 } from "react-icons/io5/index.js";
-import Timeline from "@layouts/components/basic/Timeline.astro";
-import InfoCard from "@layouts/components/InfoCard.astro";
-import type { CollectionEntry } from "astro:content";
 
 const entry: CollectionEntry<"about"> = await getEntryBySlug("about", "index");
 const { Content } = await entry.render();
@@ -62,6 +58,32 @@ const extra = [
     content: birthday,
   },
 ];
+
+const posts = await getCollection("posts");
+const pages = await getCollection("pages");
+const projects = await getCollection("projects");
+
+const allPages = [...pages, ...posts, ...projects];
+const totalPosts = allPages.length;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  mainEntity: {
+    "@type": "Person",
+    name: config.metadata.firstname + " " + config.metadata.lastname,
+    description: description,
+    image: image,
+    jobTitle: professional_title,
+    url: "https://me@divyb.xyz",
+    agentInteractionStatistic: {
+      "@type": "InteractionCounter",
+      interactionType: "https://schema.org/WriteAction",
+      userInteractionCount: totalPosts,
+    },
+    sameAs: Object.values(social).filter((item) => item.startsWith("http")),
+  },
+};
 ---
 
 <Base
@@ -69,6 +91,7 @@ const extra = [
   meta_title={meta_title}
   description={description}
   image={image}
+  structuredData={structuredData}
 >
   <div
     class="large-container mr-auto ml-auto grid grid-cols-12 md:gap-10 justify-between lg:mt-60 lg:mb-12"

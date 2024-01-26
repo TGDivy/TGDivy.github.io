@@ -3,7 +3,9 @@ import Base from "@layouts/Base.astro";
 import Default from "@layouts/Default.astro";
 import PostSingle from "@layouts/PostSingle.astro";
 import ProjectSingle from "@layouts/ProjectSingle.astro";
+import config from "@config/config.json";
 import { getCollection } from "astro:content";
+import { humanize } from "@lib/utils/textConverter";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -24,6 +26,39 @@ export async function getStaticPaths() {
 const { page } = Astro.props;
 const { data, collection } = page;
 const { title, meta_title, description, image } = data;
+
+const { firstname, lastname, meta_description } = config.metadata;
+const { city, country, birthday, email } = config.contactinfo;
+
+const structuredData =
+  collection === "posts" || collection === "projects"
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: humanize(title),
+        description: data.description || meta_description,
+        keywords: data.tags,
+        image: image,
+        datePublished: data.date,
+        author: {
+          "@type": "Person",
+          name: `${firstname} ${lastname}`,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: city,
+            addressCountry: country,
+          },
+          url: "https://divyb.xyz",
+          email: email,
+          birthDate: birthday,
+        },
+      }
+    : {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: title,
+        description: meta_description,
+      };
 ---
 
 <Base
@@ -31,6 +66,7 @@ const { title, meta_title, description, image } = data;
   meta_title={meta_title}
   description={description}
   image={image}
+  structuredData={structuredData}
 >
   {
     collection === "posts" ? (

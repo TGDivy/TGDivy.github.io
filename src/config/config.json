@@ -21,7 +21,7 @@
     "firstname": "Divy",
     "lastname": "Bramhecha",
     "meta_image": "/images/authors/divy-b.jpg",
-    "meta_description": "Divy B's personal website and blog"
+    "meta_description": "Divy Bramhecha's personal website and blog"
   },
 
   "params": {
@@ -33,7 +33,7 @@
     "address": "London, UK <br/> S126PQ",
     "city": "London",
     "country": "UK",
-    "email": "me [at] divyb [dot] xyz",
+    "email": "me@divyb.xyz",
     "phone": "+44 7453 433712",
     "birthday": "7th July, 2000"
   }

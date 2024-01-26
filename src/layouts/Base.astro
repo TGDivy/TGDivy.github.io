@@ -20,11 +20,21 @@ export interface Props {
   image?: string;
   noindex?: boolean;
   canonical?: string;
+  structuredData?: {
+    [key: string]: any;
+  };
 }
 
 // distructure frontmatters
-const { title, meta_title, description, image, noindex, canonical } =
-  Astro.props;
+const {
+  title,
+  meta_title,
+  description,
+  image,
+  noindex,
+  canonical,
+  structuredData,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -154,6 +164,15 @@ const { title, meta_title, description, image, noindex, canonical } =
     />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- structured data -->
+    {
+      structuredData && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(structuredData)}
+        />
+      )
+    }
     <!-- <ViewTransitions /> -->
   </head>
   <body class="">
