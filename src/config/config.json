@@ -1,6 +1,6 @@
 {
   "site": {
-    "title": "Divy B",
+    "title": "Divy Bramhecha",
     "base_url": "https://www.divyb.xyz",
     "base_path": "/",
     "trailing_slash": false,
@@ -8,16 +8,16 @@
     "logo": "/images/logo/Divy B-logos_transparent2.png",
     "logo_width": "150",
     "logo_height": "34",
-    "logo_text": "Divy B"
+    "logo_text": "Divy Bramhecha"
   },
 
   "settings": {
-    "pagination": 5,
+    "pagination": 10,
     "summary_length": 100
   },
 
   "metadata": {
-    "meta_author": "Divy B",
+    "meta_author": "Divy Bramhecha",
     "firstname": "Divy",
     "lastname": "Bramhecha",
     "meta_image": "/images/authors/divy-b.jpg",

@@ -11,7 +11,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const projects = await getCollection("projects");
   const sortedProjects = sortProjectByAttribute(projects, "stargazers_count");
-  return paginate(sortedProjects, { pageSize: config.settings.pagination * 1 });
+  return paginate(sortedProjects, { pageSize: config.settings.pagination });
 };
 
 type Props = {
@@ -21,9 +21,6 @@ type Props = {
 const { page } = Astro.props;
 
 const projects = page.data;
-
-const categories = await getTaxonomy("posts", "categories");
-const tags = await getTaxonomy("posts", "tags");
 ---
 
 <Base>

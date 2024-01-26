@@ -57,14 +57,14 @@ const fontSize = {
   lg: "text-base",
 };
 
-const classString = `rounded-lg bg-slate-200 text-dark transition hover:bg-primary hover:text-white flex items-center group ${padding[size]} ${fontSize[size]}`;
+const classString = `rounded-lg bg-slate-200 shadow-md font-semibold text-dark transition hover:bg-primary hover:text-white flex items-center group ${padding[size]} ${fontSize[size]}`;
 ---
 
 <ul class="space-x-2 space-y-2">
   {
     slugifiedTags.map((tag) => (
       <li class="inline-block">
-        <a href={`/tags/${tag}`} class={classString}>
+        <a href={`/tags?tag=${tag}`} class={classString}>
           <FaHashtag className="mr-1 text-primary group-hover:text-white transition" />
           <>{humanize(tag || "")}</>
           {counts && (

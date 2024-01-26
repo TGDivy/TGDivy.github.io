@@ -1,6 +1,6 @@
 ---
 title: "About Me"
-meta_title: "Divy B."
+meta_title: "Divy Bramhecha"
 image: "/images/authors/divy-b.jpg"
 draft: false
 

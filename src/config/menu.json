@@ -15,21 +15,12 @@
   ],
   "footer": [
     {
-      "name": "Authors",
-      "url": "/authors"
-    },
-    {
       "name": "Blog",
       "url": "/blog/1"
     },
     {
       "name": "Contact",
       "url": "/contact"
-    },
-
-    {
-      "name": "Elements",
-      "url": "/elements"
     },
     {
       "name": "Privacy Policy",

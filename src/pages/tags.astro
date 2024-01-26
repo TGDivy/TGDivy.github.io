@@ -1,0 +1,65 @@
+---
+import Base from "@layouts/Base.astro";
+import { getTaxonomy } from "@lib/taxonomyParser.astro";
+import { getCollection } from "astro:content";
+import TagsPage from "@layouts/Tags";
+import { slugify } from "@lib/utils/textConverter";
+
+// Retrieve all articles
+const posts = await getCollection("posts");
+const projects = await getCollection("projects");
+
+const allPosts = [...posts, ...projects];
+
+// List of items to search in
+const searchList = allPosts.map((item) => ({
+  slug: item.slug,
+  data: item.data,
+  content: item.body,
+}));
+
+// Get all tags
+const tagsPosts = await getTaxonomy("posts", "tags");
+const tagsProject = await getTaxonomy("projects", "tags");
+const tags = [...tagsPosts, ...tagsProject];
+
+let slugifiedTags = tags.map((tag) => slugify(tag || ""));
+
+const tagCounts: Record<string, number> = {};
+searchList.forEach((post) => {
+  const tags = post.data.tags;
+
+  tags.forEach((tag: string) => {
+    const slugifiedTag = slugify(tag || "");
+    if (tagCounts[slugifiedTag]) {
+      tagCounts[slugifiedTag] += 1;
+    } else {
+      tagCounts[slugifiedTag] = 1;
+    }
+  });
+});
+
+slugifiedTags.sort((a, b) => {
+  return tagCounts[b] - tagCounts[a] || a.localeCompare(b);
+});
+
+// remove duplicates
+slugifiedTags = slugifiedTags.filter(
+  (tag, index) => slugifiedTags.indexOf(tag) === index,
+);
+---
+
+<Base title={"Tags"}>
+  <section>
+    <div class="container text-center">
+      <TagsPage
+        client:load
+        client:only
+        searchList={searchList}
+        tagList={slugifiedTags}
+        tagCounts={tagCounts}
+        type="tags"
+      />
+    </div>
+  </section>
+</Base>
