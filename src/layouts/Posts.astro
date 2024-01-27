@@ -4,7 +4,6 @@ import config from "@config/config.json";
 import dateFormat from "@lib/utils/dateFormat";
 import { humanize, slugify } from "@lib/utils/textConverter";
 import { BiCalendarEdit, BiCategoryAlt } from "react-icons/bi/index.js";
-import MyAvatar from "./components/special/MyAvatar.astro";
 import Card from "./components/basic/Card.astro";
 
 interface Props {
@@ -67,7 +66,7 @@ const { className, posts, fluid } = Astro.props;
             </a>
           </h3>
           <p class="text-text">
-            {post.body?.slice(
+            {post.data.description?.slice(
               0,
               Number(
                 i === 0 && fluid != false ? summary_length * 2 : summary_length,

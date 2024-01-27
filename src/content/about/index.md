@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 meta_title: "Divy Bramhecha"
-image: "/images/authors/divy-b.jpg"
+image: "/images/authors/divy-b.png"
 draft: false
 
 professional_title: "Software Engineer"

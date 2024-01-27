@@ -21,10 +21,10 @@ const { Content } = await post.render();
 const { title, description, categories, image, date, tags } = post.data;
 ---
 
-<section class="section">
-  <div class="container" style={{ viewTransitionName: "player" }}>
-    <article class="row justify-center">
-      <div class="md:col-10 text-center">
+<section class="section mb-0">
+  <div class="large-container" style={{ viewTransitionName: "player" }}>
+    <article class="col justify-center">
+      <div class="md:col-12 text-center">
         <h1 set:html={markdownify(title)} class="h2" />
         <ul class="mt-4 flex flex-wrap items-center justify-center text-text">
           <li class="mx-3">
@@ -57,13 +57,13 @@ const { title, description, categories, image, date, tags } = post.data;
         </ul>
       </div>
 
-      <div class="col-12 mt-8 mb-2">
+      <div class="col-8 mt-8 mb-2 mx-auto">
         {
           image && (
             <Image
               src={image}
-              height={500}
-              width={1000}
+              height={400}
+              width={1300}
               alt={title}
               class="rounded-lg"
               transition:name={`posts-image-${post.id}`}
@@ -72,19 +72,19 @@ const { title, description, categories, image, date, tags } = post.data;
         }
       </div>
 
-      <div class="md:col-10">
-        <div class="content mb-16 text-left">
+      <div class="md:col-12">
+        <div class="content mb-16 text-left align-middle justify-center">
           <Content />
         </div>
-        <div class="flex flex-wrap items-center justify-between">
-          <Tags tags={tags} counts />
-          <Share
-            className="social-share mb-4"
-            title={title}
-            description={description}
-            slug={post.slug}
-          />
-        </div>
+      </div>
+      <div class="flex flex-wrap justify-between col-8 mx-auto items-center">
+        <Tags tags={tags} counts />
+        <Share
+          className="social-share"
+          title={title}
+          description={description}
+          slug={post.slug}
+        />
       </div>
     </article>
   </div>

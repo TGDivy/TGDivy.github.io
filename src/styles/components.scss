@@ -109,7 +109,8 @@
 // content style
 .content {
   @apply prose;
-  // @apply text-slate-600
+  // align self to center
+  @apply mx-auto;
 
   h1 {
     @apply mb-8 text-center font-bold leading-10;
@@ -205,8 +206,16 @@
     @apply w-[-webkit-fill-available] my-0 md:-mx-16 rounded-xl;
   }
 
+  iframe {
+    @apply w-[-webkit-fill-available] my-0 md:-mx-16 rounded-xl;
+  }
+
   * {
     @apply border-slate-900;
+  }
+
+  .fullwidth {
+    @apply md:-mx-64 w-[-webkit-fill-available];
   }
 
   // @media (min-width: 768px) {
