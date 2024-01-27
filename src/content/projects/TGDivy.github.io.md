@@ -1,13 +1,13 @@
 ---
 title: "TGDivy.github.io"
-description: "Portfolio Website"
+description: "Building Portfolio Website in Astro, and automatically fetching all the GitHub projects."
 image: "/images/projects/TGDivy.github.io/HomePage1.png"
 tags: 
 - astro
 - portfolio-website
 created_at: 2023-12-15T02:14:37Z
-updated_at: 2024-01-27T01:08:33Z
-date: 2024-01-27T01:08:33Z
+updated_at: 2024-01-27T01:13:35Z
+date: 2024-01-27T01:13:35Z
 html_url: "https://github.com/TGDivy/TGDivy.github.io"
 forks_count: 0
 stargazers_count: 0

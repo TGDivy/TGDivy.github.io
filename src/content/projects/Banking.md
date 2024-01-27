@@ -41,8 +41,6 @@ Built using the Starling API, and the Starling Developer Sandbox.
   * Gson
   * Maven
 
-<img src="Demo/programming_languages.png" width=50% height=50%>
-
 ## How to run
 
 * Clone the repo
