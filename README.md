@@ -24,15 +24,21 @@ It is super fast and SEO friendly which makes it easier for the content to be di
 - 📱 Fully Responsive on Desktops, Tablets, and Smartphones
 - 🔍 SEO Friendly
 
+<!-- Display 3 images in a row (use table maybe) -->
+![Home Page](readme/HomePage1.png)
+![Home Page](readme/HomePage2.png)
+![Project Page](readme/ProjectPage.png)
+
+
 ### 🔧Installation
 
 After downloading the template, you have some prerequisites to install. Then you can run it on your localhost. You can view the package.json file to see which scripts are included.
 
-### ⚙️Install prerequisites
+#### ⚙️Install prerequisites
 
 - **Node Installation:** [Install node js](https://nodejs.org/en/download/) [Recommended LTS version]
 
-### 🖥️Local setup
+#### 🖥️Local setup
 
 - Install dependencies
 
@@ -48,7 +54,7 @@ npm run dev
 
 After that, it will open up a preview of the template in your default browser, watch for changes to source files, and live-reload the browser when changes are saved.
 
-## 🔨Production Build
+#### 🔨Production Build
 
 After finishing all the customization, you can create a production build by running this command.
 
