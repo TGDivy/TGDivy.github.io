@@ -22,13 +22,13 @@ tags:
 - tokenization
 - tweets
 created_at: 2018-10-19T14:37:44Z
-updated_at: 2023-12-17T05:42:36Z
-date: 2023-12-17T05:42:36Z
+updated_at: 2024-01-11T04:47:00Z
+date: 2024-01-11T04:47:00Z
 html_url: "https://github.com/TGDivy/MBTI-Personality-Classifier"
 forks_count: 17
-stargazers_count: 51
+stargazers_count: 52
 size: 953
-watchers_count: 51
+watchers_count: 52
 ---
 
 # MBTI-Personality-Classifier
