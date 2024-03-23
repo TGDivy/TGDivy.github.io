@@ -16,6 +16,11 @@ what_i_do:
     description: "I explore AI to understand human psychology and behavior, and to create intelligent systems that can help solve real-world problems."
 
 timeline:
+- label: "Scaling Products"
+  content:
+  - date: "08/04/2024"
+    title: "Software Engineer at Bloomberg"
+    description: "TBC"
 - label: "Building Products"
   content:
   - date: "01/30/2023"
