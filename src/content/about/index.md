@@ -20,7 +20,7 @@ timeline:
   content:
   - date: "08/04/2024"
     title: "Software Engineer at Bloomberg"
-    description: "TBC"
+    description: "Joining Bloomberg as a SWE, I will contribute to the development and enhancement of financial software solutions. My focus will be on leveraging cutting-edge technologies to improve data analytics, trading platforms, and financial modeling tools."
 - label: "Building Products"
   content:
   - date: "01/30/2023"
